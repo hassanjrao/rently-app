@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCarSeatsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('car_seats', function (Blueprint $table) {
+            $table->id();
+
+
+            $table->string('name');
+
+            $table->integer('number_of_seats');
+
+            $table->boolean('more_than_6_seats')->default(false);
+
+            $table->softDeletes();
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('car_seats');
+    }
+}
