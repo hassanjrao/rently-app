@@ -66,8 +66,9 @@
                                             <img class="logo-1" src="{{ asset('front-assets/images/logo-light.png') }}"
                                             style="width: 100px"
                                                 alt="">
-                                            {{-- <img class="logo-2" src="{{ asset('front-assets/images/logo-light.jpg') }}"
-                                                alt=""> --}}
+                                            <img class="logo-2" src="{{ asset('front-assets/images/logo-light.png') }}"
+                                            style="width: 100px"
+                                                alt="">
                                         </a>
                                     </div>
                                     <!-- logo close -->
