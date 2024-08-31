@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,6 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::resource('cars',CarController::class)->only(['index','show']);
+
+Route::get('profile',[UserProfileController::class,'index'])->name('profile.index');
+Route::get('profile/dashboard',[UserProfileController::class,'dashboard'])->name('profile.dashboard');

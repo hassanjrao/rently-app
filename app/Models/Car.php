@@ -50,5 +50,19 @@ class Car extends Model
         return $this->belongsTo(BodyType::class)->withDefault();
     }
 
+    public function fuelType()
+    {
+        return $this->belongsTo(FuelType::class)->withDefault();
+    }
+
+    public function carEngine()
+    {
+        return $this->belongsTo(CarEngine::class)->withDefault();
+    }
+
+    public function driveType()
+    {
+        return $this->belongsTo(DriveType::class)->withDefault();
+    }
 
 }

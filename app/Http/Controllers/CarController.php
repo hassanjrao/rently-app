@@ -81,7 +81,10 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        $car=Car::with(['features','images','seat','vehicleType','bodyType','transmission'])
+        ->findOrFail($id);
+
+        return view('front.cars.show',compact('car'));
     }
 
     /**

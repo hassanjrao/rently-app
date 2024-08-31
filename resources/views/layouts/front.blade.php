@@ -59,7 +59,7 @@
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
-                                        <a href="index.html">
+                                        <a href="{{ route('home') }}">
                                             <img class="logo-1" src="{{ asset('front-assets/images/logo-light.png') }}"
                                                 alt="">
                                             <img class="logo-2" src="{{ asset('front-assets/images/logo.png') }}"
@@ -71,7 +71,8 @@
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
-                                    <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="index.html">Home</a>
+                                    <li><a class="{{ request()->is('/') ? 'active' : '' }}"
+                                            href="{{ route('home') }}">Home</a>
 
                                     </li>
                                     <li><a class="menu-item {{ request()->is('cars*') ? 'active' : '' }}"
@@ -96,8 +97,15 @@
                             </div>
                             <div class="de-flex-col">
                                 <div class="menu_side_area">
-                                    <a href="login.html" class="btn-main">Sign In</a>
-                                    <span id="menu-btn"></span>
+                                    @auth
+                                        <a href="{{ route('profile.dashboard') }}" class="btn-main">Profile</a>
+
+                                    @endauth
+                                    @guest
+                                        <a href="{{ route('register') }}" class="btn-main">Sign Up</a>
+                                        <a href="{{ route('login') }}" class="btn-main">Sign In</a>
+                                    @endguest
+
                                 </div>
                             </div>
                         </div>
@@ -177,7 +185,7 @@
                         <div class="col-md-12">
                             <div class="de-flex">
                                 <div class="de-flex-col">
-                                    <a href="index.html">
+                                    <a href="{{ route('home') }}">
                                         Copyright 2024 - Rentaly by Designesia
                                     </a>
                                 </div>

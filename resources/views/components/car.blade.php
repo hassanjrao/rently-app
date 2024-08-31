@@ -9,7 +9,7 @@
     <div class="d-info">
         <div class="d-text">
             <h4>
-                <a href="car-single.html">{{ $car->name }}</a>
+                <a href="{{ route('cars.show',$car->id) }}">{{ $car->name }}</a>
             </h4>
             <div class="d-item_like">
                 <i class="fa fa-heart"></i><span>74</span>
@@ -38,7 +38,7 @@
             </div>
             <div class="d-price">
                 Daily rate from <span>{{ config('app.currency_symbol') }} {{ $car->daily_rate }}</span>
-                <a class="btn-main" href="car-single.html">Rent Now</a>
+                <a class="btn-main" href="{{ route('cars.show',$car->id) }}">Rent Now</a>
             </div>
         </div>
     </div>
