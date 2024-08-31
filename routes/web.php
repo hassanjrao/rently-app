@@ -22,7 +22,12 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::resource('cars',CarController::class)->only(['index','show']);
+Route::resource('cars', CarController::class)->only(['index', 'show']);
 
-Route::get('profile',[UserProfileController::class,'index'])->name('profile.index');
-Route::get('profile/dashboard',[UserProfileController::class,'dashboard'])->name('profile.dashboard');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::post('profile/update', [UserProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', [UserProfileController::class, 'index'])->name('profile.index');
+    Route::get('profile/dashboard', [UserProfileController::class, 'dashboard'])->name('profile.dashboard');
+});

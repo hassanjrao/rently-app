@@ -43,6 +43,11 @@
                                         <input type="password" name="password" id="password"
                                             class="form-control @error('password') is-invalid @enderror"
                                             placeholder="Your Password" />
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="field-set mb-4">
                                         <input type="password" name="password_confirmation" id="password_confirmation"
@@ -52,11 +57,7 @@
                                     <div id="submit">
                                         <input type="submit" id="send_message" value="Sign Up"
                                             class="btn-main btn-fullwidth rounded-3" />
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                   
                                     </div>
                                 </form>
                                 <div class="text-center w-100 mt-3">

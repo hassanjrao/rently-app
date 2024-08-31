@@ -17,7 +17,7 @@
     <link id="colors" href="{{ asset('front-assets/css/colors/scheme-01.css') }}" rel="stylesheet" type="text/css">
 </head>
 
-<body onload="initialize()">
+<body>
     <div id="wrapper">
 
         <!-- page preloader begin -->
@@ -206,10 +206,11 @@
     ================================================== -->
     <script src="{{ asset('front-assets/js/plugins.js') }}"></script>
     <script src="{{ asset('front-assets/js/designesia.js') }}"></script>
-    <script
+    {{-- <script
         src="https://maps.googleapis.com/maps/api/js?key=insert_your_api_key_here&amp;libraries=places&amp;callback=initPlaces"
-        async="" defer=""></script>
+        async="" defer=""></script> --}}
 
+    @include('sweetalert::alert')
 
     @stack('scripts')
 

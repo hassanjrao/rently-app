@@ -31,7 +31,8 @@
                         <div class="card p-4  rounded-5">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="form-create-item" class="form-border" method="post" action="email.php">
+                                    <form id="form-create-item" class="form-border" method="post" action="{{ route('profile.update') }}">
+                                        @csrf
                                         <div class="de_tab tab_simple">
 
                                             <ul class="de_nav">
@@ -49,19 +50,19 @@
                                                                 value="{{ auth()->user()->name }}" placeholder="Enter Name"
                                                                 required />
                                                             @error('name')
-                                                                <span class="invalid-feedback" role="alert">
+                                                                <span class="text-danger" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Email Address</h5>
-                                                            <input type="email" name="email" id="email"
+                                                            <input type="text" name="email" id="email"
+                                                                class="form-control @error('email') is-invalid @enderror"
                                                                 value="{{ auth()->user()->email }}"
-                                                                class="form-control @error('name') is-invalid @enderror"
                                                                 placeholder="Enter email" required />
                                                             @error('email')
-                                                                <span class="invalid-feedback" role="alert">
+                                                                <span class="text-danger" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror
@@ -69,18 +70,19 @@
                                                         <div class="col-lg-6 mb20">
                                                             <h5>New Password</h5>
                                                             <input type="Password" name="password" id="password"
-                                                                class="form-control" placeholder="********" required />
+                                                                class="form-control" placeholder="********" />
                                                             @error('password')
-                                                                <span class="invalid-feedback" role="alert">
+                                                                <span class="text-danger" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Re-enter Password</h5>
-                                                            <input type="Password" name="password_re-enter"
-                                                                id="password_re-enter" class="form-control"
-                                                                placeholder="********" required />
+                                                            <input type="Password" name="password_confirmation"
+                                                                id="password_confirmation"
+                                                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                                placeholder="********" />
                                                         </div>
                                                         {{-- <div class="col-md-6 mb20">
                                                     <h5>Language</h5>
@@ -114,7 +116,7 @@
                                             </div>
                                         </div>
 
-                                        <input type="button" id="submit" class="btn-main" value="Update profile">
+                                        <input type="submit" id="submit" class="btn-main" value="Update profile">
                                     </form>
                                 </div>
                             </div>

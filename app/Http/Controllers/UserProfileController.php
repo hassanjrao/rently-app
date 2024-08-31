@@ -13,4 +13,24 @@ class UserProfileController extends Controller
     public function dashboard(){
         return view('front.profile.dashboard');
     }
+
+    public function update(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.auth()->id(),
+            'password' => 'nullable|min:8|confirmed',
+        ]);
+
+        $user = auth()->user();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->password){
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->back()->withToastSuccess('Updated successfully');
+    }
 }
