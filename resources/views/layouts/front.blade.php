@@ -3,7 +3,7 @@
 
 <head>
     <title>@yield('page-title') - {{ config('app.name') }}</title>
-    <link rel="icon" href="{{ asset('front-assets/images/icon.png') }}" type="image/gif" sizes="16x16">
+    <link rel="icon" href="{{ asset('front-assets/images/logo.png') }}" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- CSS Files
@@ -15,6 +15,9 @@
     <link href="{{ asset('front-assets/css/coloring.css') }}" rel="stylesheet" type="text/css">
     <!-- color scheme -->
     <link id="colors" href="{{ asset('front-assets/css/colors/scheme-01.css') }}" rel="stylesheet" type="text/css">
+
+    @yield('styles')
+
 </head>
 
 <body>
@@ -61,9 +64,10 @@
                                     <div id="logo">
                                         <a href="{{ route('home') }}">
                                             <img class="logo-1" src="{{ asset('front-assets/images/logo-light.png') }}"
+                                            style="width: 100px"
                                                 alt="">
-                                            <img class="logo-2" src="{{ asset('front-assets/images/logo.png') }}"
-                                                alt="">
+                                            {{-- <img class="logo-2" src="{{ asset('front-assets/images/logo-light.jpg') }}"
+                                                alt=""> --}}
                                         </a>
                                     </div>
                                     <!-- logo close -->
@@ -79,17 +83,17 @@
                                             href="{{ route('cars.index') }}">Cars</a>
 
                                     </li>
-                                    <li><a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
-                                            href="quick-booking.html">Quick Booking</a>
+                                    <li><a class="menu-item {{ request()->is('bookings/quick') ? 'active' : '' }}"
+                                            href="{{ route('bookings.quick') }}">Quick Booking</a>
 
                                     </li>
                                     <li><a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
                                             href="about.html">About Us</a></li>
                                     <li><a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
-                                            href="contact.html">Contact</a></li>
+                                            href="{{ route('contact-us.index') }}">Contact</a></li>
 
-                                    <li><a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
-                                            href="#">News</a>
+                                    <li><a class="menu-item {{ request()->is('news*') ? 'active' : '' }}"
+                                            href="{{ route('news.index') }}">News</a>
 
                                     </li>
 
@@ -154,11 +158,12 @@
                             <div class="col-lg-6">
                                 <div class="widget">
                                     <ul>
+                                        <li><a href="{{ route('cars.index') }}">Cars</a></li>
+                                        <li><a href="{{ route('bookings.quick') }}">Quick Booking</a></li>
+                                        <li><a href="{{ route('news.index') }}">News</a></li>
+                                        <li><a href="{{ route('contact-us.index') }}">Contact Us</a></li>
                                         <li><a href="#">About</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Careers</a></li>
-                                        <li><a href="#">News</a></li>
-                                        <li><a href="#">Partners</a></li>
+
                                     </ul>
                                 </div>
                             </div>

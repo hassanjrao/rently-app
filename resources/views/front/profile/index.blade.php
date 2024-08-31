@@ -67,6 +67,20 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
+
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Phone</h5>
+                                                            <input type="tel" name="phone" id="phone"
+                                                                class="form-control @error('phone') is-invalid @enderror"
+                                                                value="{{ auth()->user()->phone }}"
+                                                                placeholder="Enter phone" required />
+                                                            @error('phone')
+                                                                <span class="text-danger" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
                                                         <div class="col-lg-6 mb20">
                                                             <h5>New Password</h5>
                                                             <input type="Password" name="password" id="password"

@@ -19,12 +19,14 @@ class UserProfileController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.auth()->id(),
             'password' => 'nullable|min:8|confirmed',
+            'phone'=>'required'
         ]);
 
         $user = auth()->user();
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         if($request->password){
             $user->password = bcrypt($request->password);
         }

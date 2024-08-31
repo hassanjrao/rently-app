@@ -20,7 +20,7 @@
 
                                     <div class="field-set mb-4">
                                         <input type="text" name="name" id="name"
-                                            class="form-control @error('name') is-invalid @enderror" name="name"
+                                            class="form-control @error('name') is-invalid @enderror"
                                             value="{{ old('name') }}" placeholder="Your name" />
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -30,8 +30,19 @@
                                     </div>
 
                                     <div class="field-set mb-4">
+                                        <input type="tel" name="phone" id="phone"
+                                            class="form-control @error('phone') is-invalid @enderror"
+                                            value="{{ old('phone') }}" placeholder="Your Phone" />
+                                        @error('phone')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="field-set mb-4">
                                         <input type="text" name="email" id="email"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            class="form-control @error('email') is-invalid @enderror"
                                             value="{{ old('email') }}" placeholder="Your Email" />
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -57,7 +68,7 @@
                                     <div id="submit">
                                         <input type="submit" id="send_message" value="Sign Up"
                                             class="btn-main btn-fullwidth rounded-3" />
-                                   
+
                                     </div>
                                 </form>
                                 <div class="text-center w-100 mt-3">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BodyType;
 use App\Models\Car;
 use App\Models\CarEngine;
+use App\Models\Location;
 use App\Models\Seat;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
@@ -84,7 +85,9 @@ class CarController extends Controller
         $car=Car::with(['features','images','seat','vehicleType','bodyType','transmission'])
         ->findOrFail($id);
 
-        return view('front.cars.show',compact('car'));
+        $locations=Location::latest()->get();
+
+        return view('front.cars.show',compact('car','locations'));
     }
 
     /**
