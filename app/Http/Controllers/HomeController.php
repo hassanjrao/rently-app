@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,6 +29,8 @@ class HomeController extends Controller
         ->with(['seat','vehicleType','bodyType','transmission'])
         ->take(10)->get();
 
-        return view('front.home',compact('cars'));
+        $latestNews=News::latest()->take(3)->get();
+
+        return view('front.home',compact('cars','latestNews'));
     }
 }
