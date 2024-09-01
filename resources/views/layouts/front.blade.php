@@ -28,7 +28,7 @@
         <!-- page preloader close -->
 
         <!-- header begin -->
-        <header class="transparent scroll-light has-topbar">
+        <header class="scroll-light has-topbar" style="background: white; color:#333333">
             <div id="topbar" class="topbar-dark text-light">
                 <div class="container">
                     <div class="topbar-left xs-hide">
