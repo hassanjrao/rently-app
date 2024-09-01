@@ -1,6 +1,12 @@
 @extends('layouts.front')
 
 @section('page-title', 'Home')
+@php
+    // check if in cache settings exists otherwise query Settings and store in cache
+    $settings = Cache::remember('settings', 60 * 60 * 24, function () {
+        return \App\Models\Setting::first();
+    });
+@endphp
 
 @section('content')
     <!-- Hero -->
@@ -566,7 +572,7 @@
                                     Call Us Now
                                 </span>
                                 <span class="pnb-num">
-                                    1 200 333 800
+                                    {{ $settings->phone }}
                                 </span>
                             </div>
                             <a href="#" class="btn-main">Contact Us</a>

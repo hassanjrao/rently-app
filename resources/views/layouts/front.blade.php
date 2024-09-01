@@ -20,6 +20,13 @@
 
 </head>
 
+@php
+    // check if in cache settings exists otherwise query Settings and store in cache
+    $settings = Cache::remember('settings', 60 * 60 * 24, function () {
+        return \App\Models\Setting::first();
+    });
+@endphp
+
 <body>
     <div id="wrapper">
 
@@ -33,22 +40,37 @@
                 <div class="container">
                     <div class="topbar-left xs-hide">
                         <div class="topbar-widget">
-                            <div class="topbar-widget"><a href="#"><i class="fa fa-phone"></i>+208 333 9296</a>
+                            <div class="topbar-widget"><a href="#"><i class="fa fa-phone"></i>
+                                    {{ $settings->phone }}
+                                </a>
                             </div>
-                            <div class="topbar-widget"><a href="#"><i
-                                        class="fa fa-envelope"></i>contact@rentaly.com</a></div>
-                            <div class="topbar-widget"><a href="#"><i class="fa fa-clock-o"></i>Mon - Fri 08.00 -
-                                    18.00</a></div>
+                            <div class="topbar-widget"><a  href="mailto:{{ $settings->email }}"><i class="fa fa-envelope"></i>
+                                    {{ $settings->email }}
+                                </a></div>
+                            <div class="topbar-widget"><a href="#"><i class="fa fa-clock-o"></i>
+                                    {{ $settings->timings }}
+                                </a></div>
                         </div>
                     </div>
 
                     <div class="topbar-right">
                         <div class="social-icons">
-                            <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                            <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                            <a href="#"><i class="fa fa-youtube fa-lg"></i></a>
-                            <a href="#"><i class="fa fa-pinterest fa-lg"></i></a>
-                            <a href="#"><i class="fa fa-instagram fa-lg"></i></a>
+                            @if ($settings->facebook)
+                                <a href="{{ $settings->facebook }}">
+                                    <i class="fa fa-facebook fa-lg"></i>
+                                </a>
+                            @endif
+                            @if ($settings->twitter)
+                                <a href="{{ $settings->twitter }}">
+                                    <i class="fa fa-twitter fa-lg"></i>
+                                </a>
+                            @endif
+                            @if ($settings->instagram)
+                                <a href="{{ $settings->instagram }}">
+                                    <i class="fa fa-instagram fa-lg"></i>
+                                </a>
+                            @endif
+
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -64,11 +86,9 @@
                                     <div id="logo">
                                         <a href="{{ route('home') }}">
                                             <img class="logo-1" src="{{ asset('front-assets/images/logo-light.png') }}"
-                                            style="width: 100px"
-                                                alt="">
+                                                style="width: 100px" alt="">
                                             <img class="logo-2" src="{{ asset('front-assets/images/logo-light.png') }}"
-                                            style="width: 100px"
-                                                alt="">
+                                                style="width: 100px" alt="">
                                         </a>
                                     </div>
                                     <!-- logo close -->
@@ -131,7 +151,7 @@
                 <div class="row g-custom-x">
                     <div class="col-lg-3">
                         <div class="widget">
-                            <h5>About Rentaly</h5>
+                            <h5>About {{ config('app.name') }}</h5>
                             <p>Where quality meets affordability. We understand the importance of a smooth and enjoyable
                                 journey without the burden of excessive costs. That's why we have meticulously crafted
                                 our offerings to provide you with top-notch vehicles at minimum expense.</p>
@@ -142,13 +162,16 @@
                         <div class="widget">
                             <h5>Contact Info</h5>
                             <address class="s1">
-                                <span><i class="id-color fa fa-map-marker fa-lg"></i>08 W 36th St, New York, NY
-                                    10001</span>
-                                <span><i class="id-color fa fa-phone fa-lg"></i>+1 333 9296</span>
+                                <span><i class="id-color fa fa-map-marker fa-lg"></i>
+                                    {{ $settings->address }}
+                                </span>
+                                <span><i class="id-color fa fa-phone fa-lg"></i>
+                                    {{ $settings->phone }}
+                                </span>
                                 <span><i class="id-color fa fa-envelope-o fa-lg"></i><a
-                                        href="mailto:contact@example.com">contact@example.com</a></span>
-                                <span><i class="id-color fa fa-file-pdf-o fa-lg"></i><a href="#">Download
-                                        Brochure</a></span>
+                                        href="mailto:{{ $settings->email }}">{{ $settings->email }}</a>
+                                </span>
+
                             </address>
                         </div>
                     </div>
@@ -175,11 +198,23 @@
                         <div class="widget">
                             <h5>Social Network</h5>
                             <div class="social-icons">
-                                <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-linkedin fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-pinterest fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-rss fa-lg"></i></a>
+                                @if ($settings->facebook)
+                                    <a href="{{ $settings->facebook }}">
+                                        <i class="fa fa-facebook fa-lg"></i>
+                                    </a>
+                                @endif
+                                @if ($settings->twitter)
+                                    <a href="{{ $settings->twitter }}">
+                                        <i class="fa fa-twitter fa-lg"></i>
+                                    </a>
+                                @endif
+
+                                @if ($settings->instagram)
+                                    <a href="{{ $settings->instagram }}">
+                                        <i class="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -192,7 +227,8 @@
                             <div class="de-flex">
                                 <div class="de-flex-col">
                                     <a href="{{ route('home') }}">
-                                        Copyright 2024 - Rentaly by Designesia
+                                        Copyright &copy;
+                                        {{ date('Y') }} {{ config('app.name') }}. All Rights Reserved.
                                     </a>
                                 </div>
                                 <ul class="menu-simple">

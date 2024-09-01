@@ -11,7 +11,25 @@ class UserProfileController extends Controller
     }
 
     public function dashboard(){
-        return view('front.profile.dashboard');
+
+        $user=auth()->user();
+
+
+        $totalBookings=$user->bookings()->count();
+
+        $cancelledBookings=$user->bookings()->where('status','cancelled')->count();
+        $completedBookings=$user->bookings()->where('status','completed')->count();
+
+
+        // last 2 days bookings
+        $recentBookings=$user->bookings()->where('created_at','>=',now()->subDays(2))
+        ->with(['car','pickupLocation','destinationLocation'])
+        ->get();
+
+        $upComingBookings=$user->bookings()->where('pickup_date_time','>=',now())->count();
+
+
+        return view('front.profile.dashboard',compact('user','recentBookings','upComingBookings','totalBookings','cancelledBookings','completedBookings'));
     }
 
     public function update(Request $request){

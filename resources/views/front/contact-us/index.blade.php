@@ -4,6 +4,13 @@
 
 @section('content')
 
+@php
+    // check if in cache settings exists otherwise query Settings and store in cache
+    $settings = Cache::remember('settings', 60 * 60 * 24, function () {
+        return \App\Models\Setting::first();
+    });
+@endphp
+
 <div class="no-bottom no-top" id="content">
     <div id="top"></div>
 
@@ -72,25 +79,20 @@
                 <div class="col-lg-4">
 
                     <div class="de-box mb30">
-                        <h4>US Office</h4>
                         <address class="s1">
-                            <span><i class="id-color fa fa-map-marker fa-lg"></i>08 W 36th St, New York, NY 10001</span>
-                            <span><i class="id-color fa fa-phone fa-lg"></i>+1 333 9296</span>
-                            <span><i class="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">contact@example.com</a></span>
-                            <span><i class="id-color fa fa-file-pdf-o fa-lg"></i><a href="#">Download Brochure</a></span>
+                            <span><i class="id-color fa fa-map-marker fa-lg"></i>
+                                {{ $settings->address }}
+                            </span>
+                            <span><i class="id-color fa fa-phone fa-lg"></i>
+                                <a href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a>
+                            </span>
+                            <span><i class="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a></span>
+                            
                         </address>
                     </div>
 
 
-                    <div class="de-box mb30">
-                        <h4>AU Office</h4>
-                        <address class="s1">
-                            <span><i class="fa fa-map-marker fa-lg"></i>100 Mainstreet Center, Sydney</span>
-                            <span><i class="fa fa-phone fa-lg"></i>+61 333 9296</span>
-                            <span><i class="fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">contact@example.com</a></span>
-                            <span><i class="fa fa-file-pdf-o fa-lg"></i><a href="#">Download Brochure</a></span>
-                        </address>
-                    </div>
+
 
                 </div>
 
