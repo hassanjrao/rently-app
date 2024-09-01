@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BodyType;
 use App\Models\Car;
 use App\Models\CarEngine;
+use App\Models\Faq;
 use App\Models\News;
 use App\Models\Seat;
 use App\Models\VehicleType;
@@ -40,6 +41,10 @@ class HomeController extends Controller
         $seats=Seat::all();
         $carEngines=CarEngine::all();
 
-        return view('front.home',compact('cars','latestNews','vehicleTypes','bodyTypes','seats','carEngines'));
+        // get faqs in two columns
+        $firstColumnFaqs=Faq::latest()->take(ceil(Faq::count()/2))->get();
+        $secondColumnFaqs=Faq::latest()->skip(ceil(Faq::count()/2))->take(Faq::count())->get();
+
+        return view('front.home',compact('cars','latestNews','vehicleTypes','bodyTypes','seats','carEngines','firstColumnFaqs','secondColumnFaqs'));
     }
 }

@@ -513,36 +513,17 @@
                     <div class="col-md-6 wow fadeInUp">
                         <div class="accordion secondary">
                             <div class="accordion-section">
-                                <div class="accordion-section-title" data-tab="#accordion-1">
-                                    How do I get started with Car Rental?
-                                </div>
-                                <div class="accordion-section-content" id="accordion-1">
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                        molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
-                                        fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                </div>
-                                <div class="accordion-section-title" data-tab="#accordion-2">
-                                    Can I rent a car with a debit card??
-                                </div>
-                                <div class="accordion-section-content" id="accordion-2">
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                        molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
-                                        fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                </div>
-                                <div class="accordion-section-title" data-tab="#accordion-3">
-                                    What kind of Car Rental do I need?
-                                </div>
-                                <div class="accordion-section-content" id="accordion-3">
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                        molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
-                                        fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                </div>
+                                @foreach ($firstColumnFaqs as $faq)
+                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
+                                        {{ $faq->question }}
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
+                                        <p>
+                                            {{ $faq->answer }}
+                                        </p>
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -550,36 +531,17 @@
                     <div class="col-md-6 wow fadeInUp">
                         <div class="accordion secondary">
                             <div class="accordion-section">
-                                <div class="accordion-section-title" data-tab="#accordion-b-4">
-                                    What is a rental car security deposit?
-                                </div>
-                                <div class="accordion-section-content" id="accordion-b-4">
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                        molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
-                                        fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                </div>
-                                <div class="accordion-section-title" data-tab="#accordion-b-5">
-                                    Can I cancel or modify my reservation?
-                                </div>
-                                <div class="accordion-section-content" id="accordion-b-5">
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                        molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
-                                        fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                </div>
-                                <div class="accordion-section-title" data-tab="#accordion-b-6">
-                                    Is it possible to extend my rental period?
-                                </div>
-                                <div class="accordion-section-content" id="accordion-b-6">
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                        molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
-                                        fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                </div>
+
+                                @foreach ($secondColumnFaqs as $faq)
+                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
+                                        {{ $faq->question }}
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
+                                        <p>
+                                            {{ $faq->answer }}
+                                        </p>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
