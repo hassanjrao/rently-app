@@ -22,25 +22,21 @@ class CarSeatSeeder extends Seeder
         $seats = [
             [
                 'name' => '2 seats',
-                'number_of_seats' => 2,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => '4 seats',
-                'number_of_seats' => 4,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => '6 seats',
-                'number_of_seats' => 6,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => '6+ seats',
-                'number_of_seats' => 6,
                 'created_at' => now(),
                 'updated_at' => now()
             ]

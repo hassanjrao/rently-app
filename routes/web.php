@@ -4,7 +4,12 @@ use App\Http\Controllers\AdminBodyTypeController;
 use App\Http\Controllers\AdminCarEngineController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDriveTypeController;
+use App\Http\Controllers\AdminFeatureController;
+use App\Http\Controllers\AdminFuelTypeController;
+use App\Http\Controllers\AdminLocationController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\AdminSeatController;
+use App\Http\Controllers\AdminTransmissionController;
 use App\Http\Controllers\AdminVehicleTypeController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CarController;
@@ -67,6 +72,18 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource('car-engines', AdminCarEngineController::class)->except(['show']);
 
     Route::resource('drive-types', AdminDriveTypeController::class)->except(['show']);
+
+    Route::resource('fuel-types', AdminFuelTypeController::class)->except(['show']);
+
+
+    Route::resource('vehicle-seats', AdminSeatController::class)->except(['show']);
+
+    Route::resource('transmissions', AdminTransmissionController::class)->except(['show']);
+
+
+    Route::resource('locations', AdminLocationController::class)->except(['show']);
+
+    Route::resource('features', AdminFeatureController::class)->except(['show']);
 
 
 });

@@ -205,6 +205,39 @@
                         </li>
 
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/fuel-types*') ? ' active' : '' }}"
+                                href="{{ route('admin.fuel-types.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Fuel Types</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/vehicle-seats*') ? ' active' : '' }}"
+                                href="{{ route('admin.vehicle-seats.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Vehicle Seats</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/transmissions*') ? ' active' : '' }}"
+                                href="{{ route('admin.transmissions.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Transmissions</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/locations*') ? ' active' : '' }}"
+                                href="{{ route('admin.locations.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Locations</span>
+                            </a>
+                        </li>
+
+
 
 
 
