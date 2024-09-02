@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminBodyTypeController;
+use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminCarEngineController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDriveTypeController;
@@ -85,5 +86,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 
     Route::resource('features', AdminFeatureController::class)->except(['show']);
 
+
+    Route::resource('cars', AdminCarController::class)->except(['show']);
 
 });
