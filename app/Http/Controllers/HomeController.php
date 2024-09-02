@@ -47,4 +47,10 @@ class HomeController extends Controller
 
         return view('front.home',compact('cars','latestNews','vehicleTypes','bodyTypes','seats','carEngines','firstColumnFaqs','secondColumnFaqs'));
     }
+
+
+    public function aboutUs(){
+
+        return view('front.about-us.index');
+    }
 }

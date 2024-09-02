@@ -108,10 +108,10 @@
                                             href="{{ route('bookings.quick') }}">Quick Booking</a>
 
                                     </li>
-                                    <li><a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
-                                            href="about.html">About Us</a></li>
-                                    <li><a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
-                                            href="{{ route('contact-us.index') }}">Contact</a></li>
+                                    <li><a class="menu-item {{ request()->is('about-us') ? 'active' : '' }}"
+                                            href="{{ route('about-us') }}">About Us</a></li>
+                                    <li><a class="menu-item {{ request()->is('contact-us') ? 'active' : '' }}"
+                                            href="{{ route('contact-us.index') }}">Contact Us</a></li>
 
                                     <li><a class="menu-item {{ request()->is('news*') ? 'active' : '' }}"
                                             href="{{ route('news.index') }}">News</a>
@@ -186,7 +186,7 @@
                                         <li><a href="{{ route('bookings.quick') }}">Quick Booking</a></li>
                                         <li><a href="{{ route('news.index') }}">News</a></li>
                                         <li><a href="{{ route('contact-us.index') }}">Contact Us</a></li>
-                                        <li><a href="#">About</a></li>
+                                        <li><a href="{{ route('about-us') }}">About</a></li>
 
                                     </ul>
                                 </div>
