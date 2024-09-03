@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminCarEngineController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDriveTypeController;
+use App\Http\Controllers\AdminFaqController;
 use App\Http\Controllers\AdminFeatureController;
 use App\Http\Controllers\AdminFuelTypeController;
 use App\Http\Controllers\AdminLocationController;
@@ -102,6 +103,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 
 
     Route::resource('locations', AdminLocationController::class)->except(['show']);
+
+    Route::resource('faqs', AdminFaqController::class)->except(['show']);
+
 
     Route::resource('features', AdminFeatureController::class)->except(['show']);
 

@@ -287,6 +287,14 @@
                         </li>
 
                         <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/faqs*') ? ' active' : '' }}"
+                                href="{{ route('admin.faqs.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">FAQs</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('admin/privacy-policy*') ? ' active' : '' }}"
                                 href="{{ route('admin.privacy-policy.index') }}">
                                 <i class="nav-main-link-icon si si-cursor"></i>
