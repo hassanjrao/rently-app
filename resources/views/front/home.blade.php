@@ -10,7 +10,7 @@
 
 @section('content')
     <!-- Hero -->
-    <div class="no-bottom no-top" id="content">
+    <div class="no-bottom" id="content">
         <div id="top"></div>
         <section id="section-hero" aria-label="section" class="jarallax">
             <img src="{{ asset('front-assets/images/background/1.jpg') }}" class="jarallax-img" alt="">

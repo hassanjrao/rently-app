@@ -11,7 +11,7 @@
     });
 @endphp
 
-<div class="no-bottom no-top" id="content">
+<div class="no-bottom" id="content">
     <div id="top"></div>
 
     <!-- section begin -->
@@ -87,7 +87,7 @@
                                 <a href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a>
                             </span>
                             <span><i class="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a></span>
-                            
+
                         </address>
                     </div>
 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="no-bottom no-top zebra" id="content">
+    <div class="no-bottom zebra" id="content">
         <div id="top"></div>
 
         <!-- section begin -->

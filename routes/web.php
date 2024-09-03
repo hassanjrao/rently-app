@@ -46,6 +46,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 
+Route::get('privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('terms-conditions', [HomeController::class, 'termsConditions'])->name('terms-conditions');
+
+
 Route::resource('cars', CarController::class)->only(['index', 'show']);
 
 Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store')->middleware('auth');

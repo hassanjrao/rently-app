@@ -53,4 +53,14 @@ class HomeController extends Controller
 
         return view('front.about-us.index');
     }
+
+    public function termsConditions(){
+
+        return view('front.terms-conditions.index');
+    }
+
+    public function privacyPolicy(){
+
+        return view('front.privacy-policy.index');
+    }
 }

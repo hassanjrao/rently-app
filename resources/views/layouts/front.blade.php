@@ -232,8 +232,8 @@
                                     </a>
                                 </div>
                                 <ul class="menu-simple">
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="{{ route('terms-conditions') }}">Terms &amp; Conditions</a></li>
+                                    <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>

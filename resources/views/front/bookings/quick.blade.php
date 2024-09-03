@@ -14,7 +14,7 @@
 @section('page-title', 'Booking')
 
 @section('content')
-    <div class="no-bottom no-top" id="content">
+    <div class="no-bottom" id="content">
         <div id="top"></div>
 
         <!-- section begin -->
