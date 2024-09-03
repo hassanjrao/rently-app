@@ -7,6 +7,7 @@ use App\Models\Car;
 use App\Models\CarEngine;
 use App\Models\Faq;
 use App\Models\News;
+use App\Models\PrivacyPolicy;
 use App\Models\Seat;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
@@ -61,6 +62,8 @@ class HomeController extends Controller
 
     public function privacyPolicy(){
 
-        return view('front.privacy-policy.index');
+        $privacyPolicy=PrivacyPolicy::first();
+
+        return view('front.privacy-policy.index',compact('privacyPolicy'));
     }
 }
