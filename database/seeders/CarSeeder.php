@@ -18,7 +18,7 @@ class CarSeeder extends Seeder
             'name' => 'BMW M2 2020',
             'description' => 'The BMW M2 is the high-performance version of the 2 Series 2-door coupé. The first generation of the M2 is the F87 coupé and is powered by turbocharged.',
             'body_type_id' => 1,
-            'car_seat_id' => 1,
+            'seat_id' => 1,
             'vehicle_type_id' => 1,
             'doors' => 2,
             'luggage' => 150,
