@@ -375,6 +375,10 @@
                                     $value = $car->features->pluck('id')->toArray();
                                 }
 
+                                if(!$value){
+                                    $value = [];
+                                }
+
                                 ?>
                                 <label class="form-label" for="label"> Features <span
                                         class="text-danger"></span></label>

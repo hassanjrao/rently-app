@@ -286,10 +286,27 @@
                             </a>
                         </li>
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/privacy-policy*') ? ' active' : '' }}"
+                                href="{{ route('admin.privacy-policy.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Privacy Policy</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/terms-conditions*') ? ' active' : '' }}"
+                                href="{{ route('admin.terms-conditions.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Terms & Conditions</span>
+                            </a>
+                        </li>
 
 
 
 
+
+                        <br><br><br>
 
 
 

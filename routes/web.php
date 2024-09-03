@@ -10,9 +10,11 @@ use App\Http\Controllers\AdminFeatureController;
 use App\Http\Controllers\AdminFuelTypeController;
 use App\Http\Controllers\AdminLocationController;
 use App\Http\Controllers\AdminNewsController;
+use App\Http\Controllers\AdminPrivacyController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSeatController;
 use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\AdminTermsConditionController;
 use App\Http\Controllers\AdminTransmissionController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminVehicleTypeController;
@@ -75,6 +77,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource("settings", AdminSettingController::class)->only(["index", "update"]);
 
 
+    Route::resource("privacy-policy", AdminPrivacyController::class)->only(["index", "update"]);
+
+    Route::resource("terms-conditions", AdminTermsConditionController::class)->only(["index", "update"]);
 
     Route::resource('body-types', AdminBodyTypeController::class)->except(['show']);
 
