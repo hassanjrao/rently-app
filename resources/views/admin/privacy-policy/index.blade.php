@@ -8,7 +8,7 @@
 
         <div class="block block-rounded">
             <div class="block-header block-header-default d-flex">
-
+                <h3 class="block-title">Privacy Policy</h3>
             </div>
             <div class="block-content">
                 <form action="{{ route('admin.privacy-policy.update', $privacyPolicy->id) }}" method="POST"

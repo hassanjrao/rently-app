@@ -8,7 +8,7 @@
 
         <div class="block block-rounded">
             <div class="block-header block-header-default d-flex">
-
+                <h3 class="block-title">Terms & Conditions</h3>
             </div>
             <div class="block-content">
                 <form action="{{ route('admin.terms-conditions.update', $termsCondition->id) }}" method="POST"
