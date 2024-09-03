@@ -32,6 +32,15 @@ class UserProfileController extends Controller
         return view('front.profile.dashboard',compact('user','recentBookings','upComingBookings','totalBookings','cancelledBookings','completedBookings'));
     }
 
+
+    public function userBookings(){
+        $user=auth()->user();
+
+        $bookings=$user->bookings()->with(['car','pickupLocation','destinationLocation'])->get();
+
+        return view('front.profile.bookings',compact('bookings'));
+    }
+
     public function update(Request $request){
         $request->validate([
             'name' => 'required',

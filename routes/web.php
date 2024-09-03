@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminBodyTypeController;
+use App\Http\Controllers\AdminBookingController;
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminCarEngineController;
 use App\Http\Controllers\AdminDashboardController;
@@ -8,9 +9,11 @@ use App\Http\Controllers\AdminDriveTypeController;
 use App\Http\Controllers\AdminFeatureController;
 use App\Http\Controllers\AdminFuelTypeController;
 use App\Http\Controllers\AdminLocationController;
+use App\Http\Controllers\AdminNewsController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSeatController;
 use App\Http\Controllers\AdminTransmissionController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminVehicleTypeController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CarController;
@@ -56,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('profile/update', [UserProfileController::class, 'update'])->name('profile.update');
     Route::get('profile', [UserProfileController::class, 'index'])->name('profile.index');
     Route::get('profile/dashboard', [UserProfileController::class, 'dashboard'])->name('profile.dashboard');
+
+    Route::get('profile/bookings', [UserProfileController::class, 'userBookings'])->name('profile.bookings');
 });
 
 
@@ -88,5 +93,15 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 
 
     Route::resource('cars', AdminCarController::class)->except(['show']);
+
+
+    Route::resource('bookings', AdminBookingController::class)->except(['show', 'create', 'store','edit']);
+
+
+    Route::resource('users', AdminUserController::class)->except(['show', 'create', 'store','edit']);
+
+    Route::resource('news', AdminNewsController::class)->except(['show']);
+
+
 
 });

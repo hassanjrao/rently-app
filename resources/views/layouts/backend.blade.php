@@ -254,6 +254,30 @@
                             </a>
                         </li>
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/bookings*') ? ' active' : '' }}"
+                                href="{{ route('admin.bookings.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Bookings</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/users*') ? ' active' : '' }}"
+                                href="{{ route('admin.users.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Users</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/news*') ? ' active' : '' }}"
+                                href="{{ route('admin.news.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">News</span>
+                            </a>
+                        </li>
+
 
 
 
