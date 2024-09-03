@@ -81,7 +81,7 @@ class AdminPrivacyController extends Controller
             'content'=>$request->content,
         ]);
 
-        return back()->with('message','Updated successfully');
+        return back()->withToastSuccess('Updated successfully');
     }
 
     /**

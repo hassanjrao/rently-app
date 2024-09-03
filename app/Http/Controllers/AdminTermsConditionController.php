@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TermsCondition;
 use Illuminate\Http\Request;
 
 class AdminTermsConditionController extends Controller
@@ -13,7 +14,9 @@ class AdminTermsConditionController extends Controller
      */
     public function index()
     {
-        //
+        $termsCondition= TermsCondition::first();
+
+        return view('admin.terms-conditions.index',compact('termsCondition'));
     }
 
     /**
@@ -68,7 +71,17 @@ class AdminTermsConditionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'content'=>'required',
+        ]);
+
+        $termsCondition=TermsCondition::findorfail($id);
+
+        $termsCondition->update([
+            'content'=>$request->content,
+        ]);
+
+        return back()->withToastSuccess('Updated successfully');
     }
 
     /**
