@@ -96,7 +96,7 @@
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
-                                    <li><a class="{{ request()->is('/') ? 'active' : '' }}"
+                                    <li><a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
                                             href="{{ route('home') }}">Home</a>
 
                                     </li>
@@ -130,6 +130,8 @@
                                         <a href="{{ route('register') }}" class="btn-main">Sign Up</a>
                                         <a href="{{ route('login') }}" class="btn-main">Sign In</a>
                                     @endguest
+
+                                    <span id="menu-btn"></span>
 
                                 </div>
                             </div>
