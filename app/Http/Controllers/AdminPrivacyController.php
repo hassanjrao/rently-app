@@ -71,7 +71,17 @@ class AdminPrivacyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'content'=>'required',
+        ]);
+
+        $privacyPolicy=PrivacyPolicy::findorfail($id);
+
+        $privacyPolicy->update([
+            'content'=>$request->content,
+        ]);
+
+        return back()->with('message','Updated successfully');
     }
 
     /**
