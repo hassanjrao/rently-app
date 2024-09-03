@@ -24,13 +24,16 @@
 
 
 
-                                <textarea id="editor" name="description" style="display: none;">{!! $value !!}</textarea>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <textarea id="editor" name="description" style="display: none;">{!! $privacyPolicy->content !!}</textarea>
 
                                 @error('description')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+                                </div>
 
 
 
@@ -77,7 +80,7 @@
    <script>
      ClassicEditor
             .create(document.querySelector('#editor'), {
-              
+
             })
             .catch(error => {
                 console.error(error);
