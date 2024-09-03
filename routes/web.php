@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminLocationController;
 use App\Http\Controllers\AdminNewsController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSeatController;
+use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AdminTransmissionController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminVehicleTypeController;
@@ -69,6 +70,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::get('',[AdminDashboardController::class,'index'])->name('dashboard.index');
 
     Route::resource("profile", AdminProfileController::class)->only(["index", "update"]);
+
+
+    Route::resource("settings", AdminSettingController::class)->only(["index", "update"]);
+
 
 
     Route::resource('body-types', AdminBodyTypeController::class)->except(['show']);
