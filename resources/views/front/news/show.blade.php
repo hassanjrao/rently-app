@@ -70,16 +70,7 @@
                             </ul>
                         </div>
 
-                        <div class="widget widget-text">
-                            <h4>About Us</h4>
-                            <div class="small-border"></div>
-                            <p class="small no-bottom">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                                aspernatur aut odit aut fugit, sed quia consequuntur magni
-                            </p>
-                        </div>
+                     
 
 
                     </div>
