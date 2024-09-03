@@ -9,6 +9,7 @@ use App\Models\Faq;
 use App\Models\News;
 use App\Models\PrivacyPolicy;
 use App\Models\Seat;
+use App\Models\TermsCondition;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
 
@@ -57,7 +58,9 @@ class HomeController extends Controller
 
     public function termsConditions(){
 
-        return view('front.terms-conditions.index');
+        $termsCondition=TermsCondition::first();
+
+        return view('front.terms-conditions.index',compact('termsCondition'));
     }
 
     public function privacyPolicy(){
