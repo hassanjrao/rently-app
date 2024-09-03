@@ -11,9 +11,9 @@
             <h4>
                 <a href="{{ route('cars.show',$car->id) }}">{{ $car->name }}</a>
             </h4>
-            <div class="d-item_like">
+            {{-- <div class="d-item_like">
                 <i class="fa fa-heart"></i><span>74</span>
-            </div>
+            </div> --}}
             <div class="d-atr-group">
                 <span class="d-atr"><img
                         src="{{ asset('front-assets/images/icons/1-green.svg') }}"
