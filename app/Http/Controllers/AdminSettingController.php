@@ -81,6 +81,7 @@ class AdminSettingController extends Controller
             'facebook'=>'required',
             'instagram'=>'required',
             'twitter'=>'required',
+            'about'=>'required',
         ]);
 
         $setting->update([
@@ -91,6 +92,7 @@ class AdminSettingController extends Controller
             'facebook'=>$request->facebook,
             'instagram'=>$request->instagram,
             'twitter'=>$request->twitter,
+            'about'=>$request->about,
         ]);
 
         return redirect()->route('admin.settings.index')->withToastSuccess('Updated successfully');

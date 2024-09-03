@@ -66,6 +66,12 @@
                                         id="instagram" name="instagram">
                                 </div>
 
+                                <div class="col-lg-8 col-md-8 col-sm-12 mb-4">
+                                    <label class="form-label" for="label">About</label>
+                                    <textarea required type="text" class="form-control" id="about" name="about"
+                                        placeholder="Enter about">{{ $setting->about }}</textarea>
+                                </div>
+
 
 
 
