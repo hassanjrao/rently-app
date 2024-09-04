@@ -2,12 +2,12 @@
 
 @section('styles')
 
-<style>
-    /* add style for readonly */
-    input[readonly] {
-        background-color: #f8f9fa !important;
-    }
-</style>
+    <style>
+        /* add style for readonly */
+        input[readonly] {
+            background-color: #f8f9fa !important;
+        }
+    </style>
 
 @endsection
 
@@ -56,12 +56,19 @@
                                         @php
 
                                             $value = old('car', $car ? $car->id : null);
+
+                                            $selectedCar = $car ? $car : null;
+                                            if (!$selectedCar) {
+                                                $selectedCar = $cars->first();
+                                            }
                                         @endphp
-                                        <select name='car' id="vehicle_type" class="form-control" required>
+                                        <select name='car' id="vehicle_type" class="form-control" required
+                                            onchange="setDailyRate(this)">
 
                                             @foreach ($cars as $car)
                                                 <option value='{{ $car->id }}'
                                                     {{ $value == $car->id ? 'selected' : '' }}
+                                                    data-dailyrate="{{ $car->daily_rate }}"
                                                     data-src="{{ $car->main_image_url }}">
                                                     {{ $car->name }} -
                                                     {{ config('app.currency_symbol') . $car->daily_rate }}
@@ -103,117 +110,28 @@
                                             <div class="col-lg-6">
                                                 <h5>Pick Up Date & Time</h5>
                                                 <div class="date-time-field">
-                                                    <input type="text" id="date-picker" name="pick_up_date" required
-                                                        value="{{ old('pick_up_date') }}">
-                                                    <select name="pick_up_time" id="pickup-time" required>
-                                                        <option value="00:00">00:00</option>
-                                                        <option value="00:30">00:30</option>
-                                                        <option value="01:00">01:00</option>
-                                                        <option value="01:30">01:30</option>
-                                                        <option value="02:00">02:00</option>
-                                                        <option value="02:30">02:30</option>
-                                                        <option value="03:00">03:00</option>
-                                                        <option value="03:30">03:30</option>
-                                                        <option value="04:00">04:00</option>
-                                                        <option value="04:30">04:30</option>
-                                                        <option value="05:00">05:00</option>
-                                                        <option value="05:30">05:30</option>
-                                                        <option value="06:00">06:00</option>
-                                                        <option value="06:30">06:30</option>
-                                                        <option value="07:00">07:00</option>
-                                                        <option value="07:30">07:30</option>
-                                                        <option value="08:00">08:00</option>
-                                                        <option value="08:30">08:30</option>
-                                                        <option value="09:00">09:00</option>
-                                                        <option value="09:30">09:30</option>
-                                                        <option value="10:00">10:00</option>
-                                                        <option value="10:30">10:30</option>
-                                                        <option value="11:00">11:00</option>
-                                                        <option value="11:30">11:30</option>
-                                                        <option value="12:00">12:00</option>
-                                                        <option value="12:30">12:30</option>
-                                                        <option value="13:00">13:00</option>
-                                                        <option value="13:30">13:30</option>
-                                                        <option value="14:00">14:00</option>
-                                                        <option value="14:30">14:30</option>
-                                                        <option value="15:00">15:00</option>
-                                                        <option value="15:30">15:30</option>
-                                                        <option value="16:00">16:00</option>
-                                                        <option value="16:30">16:30</option>
-                                                        <option value="17:00">17:00</option>
-                                                        <option value="17:30">17:30</option>
-                                                        <option value="18:00">18:00</option>
-                                                        <option value="18:30">18:30</option>
-                                                        <option value="19:00">19:00</option>
-                                                        <option value="19:30">19:30</option>
-                                                        <option value="20:00">20:00</option>
-                                                        <option value="20:30">20:30</option>
-                                                        <option value="21:00">21:00</option>
-                                                        <option value="21:30">21:30</option>
-                                                        <option value="22:00">22:00</option>
-                                                        <option value="22:30">22:30</option>
-                                                        <option value="23:00">23:00</option>
-                                                        <option value="23:30">23:30</option>
-                                                    </select>
+                                                    <input type="datetime-local" class="form-control" id="datePickerPick"
+                                                        name="pick_up_date" required value="{{ old('pick_up_date') }}"
+                                                        onchange="pickupDateSelected(this)">
+
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6">
                                                 <h5>Return Date & Time</h5>
                                                 <div class="date-time-field">
-                                                    <input type="text" id="date-picker-2" name="return_date" required
-                                                        value="{{ old('return_date') }}">
-                                                    <select name="return_time" id="collection-time" required>
-                                                        <option value="00:00">00:00</option>
-                                                        <option value="00:30">00:30</option>
-                                                        <option value="01:00">01:00</option>
-                                                        <option value="01:30">01:30</option>
-                                                        <option value="02:00">02:00</option>
-                                                        <option value="02:30">02:30</option>
-                                                        <option value="03:00">03:00</option>
-                                                        <option value="03:30">03:30</option>
-                                                        <option value="04:00">04:00</option>
-                                                        <option value="04:30">04:30</option>
-                                                        <option value="05:00">05:00</option>
-                                                        <option value="05:30">05:30</option>
-                                                        <option value="06:00">06:00</option>
-                                                        <option value="06:30">06:30</option>
-                                                        <option value="07:00">07:00</option>
-                                                        <option value="07:30">07:30</option>
-                                                        <option value="08:00">08:00</option>
-                                                        <option value="08:30">08:30</option>
-                                                        <option value="09:00">09:00</option>
-                                                        <option value="09:30">09:30</option>
-                                                        <option value="10:00">10:00</option>
-                                                        <option value="10:30">10:30</option>
-                                                        <option value="11:00">11:00</option>
-                                                        <option value="11:30">11:30</option>
-                                                        <option value="12:00">12:00</option>
-                                                        <option value="12:30">12:30</option>
-                                                        <option value="13:00">13:00</option>
-                                                        <option value="13:30">13:30</option>
-                                                        <option value="14:00">14:00</option>
-                                                        <option value="14:30">14:30</option>
-                                                        <option value="15:00">15:00</option>
-                                                        <option value="15:30">15:30</option>
-                                                        <option value="16:00">16:00</option>
-                                                        <option value="16:30">16:30</option>
-                                                        <option value="17:00">17:00</option>
-                                                        <option value="17:30">17:30</option>
-                                                        <option value="18:00">18:00</option>
-                                                        <option value="18:30">18:30</option>
-                                                        <option value="19:00">19:00</option>
-                                                        <option value="19:30">19:30</option>
-                                                        <option value="20:00">20:00</option>
-                                                        <option value="20:30">20:30</option>
-                                                        <option value="21:00">21:00</option>
-                                                        <option value="21:30">21:30</option>
-                                                        <option value="22:00">22:00</option>
-                                                        <option value="22:30">22:30</option>
-                                                        <option value="23:00">23:00</option>
-                                                        <option value="23:30">23:30</option>
-                                                    </select>
+                                                    <input type="datetime-local" class="form-control" id="datePickerReturn"
+                                                        name="return_date" required value="{{ old('return_date') }}"
+                                                        onchange="calculateTotal()">
+
                                                 </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <h4>Your Total</h4>
+                                                <h5 id="total">Total:
+                                                    {{ config('app.currency_symbol') . $selectedCar->daily_rate }}
+                                                </h5>
                                             </div>
 
                                         </div>
@@ -231,9 +149,8 @@
                                                         $value = old('name', $user ? $user->name : null);
                                                         $readonly = $user ? 'readonly' : '';
                                                     @endphp
-                                                    <input type="text" name="name" id="name"
-                                                        class="form-control" value="{{ $value }}"
-                                                        {{ $readonly }}
+                                                    <input type="text" name="name" id="name" class="form-control"
+                                                        value="{{ $value }}" {{ $readonly }}
                                                         placeholder="Your Name" required>
                                                 </div>
                                             </div>
@@ -242,9 +159,8 @@
                                                     @php
                                                         $value = old('email', $user ? $user->email : null);
                                                     @endphp
-                                                    <input type="email" name="email" id="email"
-                                                        class="form-control" value="{{ $value }}"
-                                                        {{ $readonly }}
+                                                    <input type="email" name="email" id="email" class="form-control"
+                                                        value="{{ $value }}" {{ $readonly }}
                                                         placeholder="Your Email" required>
                                                 </div>
                                             </div>
@@ -253,9 +169,8 @@
                                                     @php
                                                         $value = old('phone', $user ? $user->phone : null);
                                                     @endphp
-                                                    <input type="tel" name="phone" id="phone"
-                                                        class="form-control" value="{{ $value }}"
-                                                        {{ $readonly }}
+                                                    <input type="tel" name="phone" id="phone" class="form-control"
+                                                        value="{{ $value }}" {{ $readonly }}
                                                         placeholder="Your Phone" required>
                                                 </div>
                                             </div>
@@ -279,10 +194,10 @@
 
                                 </form>
                             @elseif($bookingCreated)
-                            {{-- unset session --}}
-                            @php
-                                session()->forget('bookingCreated');
-                            @endphp
+                                {{-- unset session --}}
+                                @php
+                                    session()->forget('bookingCreated');
+                                @endphp
                                 <div id="success_message" class='success s2' style="display: block !important">
                                     <div class="row">
                                         <div class="col-lg-8 offset-lg-2 text-light text-center">
@@ -450,3 +365,101 @@
 
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        var dailyRate = {{ $selectedCar->daily_rate ?? 0 }};
+
+        console.log('dailyRate', dailyRate);
+
+        function setDailyRate(el) {
+            var selectedOption = el.options[el.selectedIndex];
+            dailyRate = selectedOption.getAttribute('data-dailyrate');
+            $('#total').text('Total: ' + dailyRate + ' {{ config('app.currency_symbol') }}');
+        }
+
+        function pickupDateSelected(el) {
+            var selectedDate = el.value;
+
+            // disable the dates of return date which are less than and equal to pick up date
+
+            let returnDateInput = document.getElementById('datePickerReturn');
+
+            let moreThanPickUpDate = new Date(selectedDate);
+            moreThanPickUpDate.setDate(moreThanPickUpDate.getDate() + 2);
+
+            returnDateInput.min = moreThanPickUpDate.toISOString().slice(0, 16);
+
+
+            // set return date to pick up date + 1 day
+            var startDate = new Date(selectedDate);
+            startDate.setDate(startDate.getDate() + 1);
+
+            var formattedDate = startDate.toISOString().slice(0, 16);
+
+            document.getElementById('datePickerReturn').value = formattedDate;
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            var pickUpDate = $('#datePickerPick').val();
+
+            // show error if pickupdate is less than today
+            var today = new Date();
+            var selectedDate = new Date(pickUpDate);
+
+            // disable the dates of return date which are less than pick up date
+
+            let returnDateInput = document.getElementById('datePickerReturn');
+            returnDateInput.min = pickUpDate;
+
+
+
+            var returnDate = $('#datePickerReturn').val();
+
+            // calculate total according to number of days * daily rate
+
+            var startDate = new Date(pickUpDate);
+            var endDate = new Date(returnDate);
+
+            var diff = endDate - startDate;
+
+            var days = diff / (1000 * 60 * 60 * 24);
+
+            if (days == 0) {
+                days = 1;
+            }
+
+            var total = days * dailyRate;
+
+            // round to 2 decimal places
+            total = total.toFixed(2);
+
+            $('#total').text(total + ' {{ config('app.currency_symbol') }}');
+        }
+
+
+        setDatePickers();
+
+        function setDatePickers() {
+
+            const now = new Date();
+
+            // Format the date and time as YYYY-MM-DDTHH:MM (required for datetime-local)
+            const formattedDateTime = now.toISOString().slice(0, 16);
+
+
+             // Set the min attribute to the current date and time
+            document.getElementById('datePickerPick').min = formattedDateTime;
+            document.getElementById('datePickerReturn').min = formattedDateTime;
+
+            // set current date and time
+            document.getElementById('datePickerPick').value = formattedDateTime;
+            // set plus 1 day
+            now.setDate(now.getDate() + 1);
+            document.getElementById('datePickerReturn').value = now.toISOString().slice(0, 16);
+
+        }
+    </script>
+@endpush

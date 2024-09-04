@@ -27,6 +27,7 @@ class BookingController extends Controller
     public function quickStore(Request $request)
     {
 
+        // dd($request->all());
         // "car" => "4"
         // "pick_up_location" => "1"
         // "destination_location" => "1"
@@ -44,9 +45,7 @@ class BookingController extends Controller
             'pick_up_location' => 'required|exists:locations,id',
             'destination_location' => 'required|exists:locations,id',
             'pick_up_date' => 'required|date',
-            'pick_up_time' => 'required',
             'return_date' => 'required|date',
-            'return_time' => 'required',
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
@@ -68,8 +67,8 @@ class BookingController extends Controller
             'user_id' => $user->id,
             'pickup_location_id' => $request->pick_up_location,
             'destination_location_id' => $request->destination_location,
-            'pickup_date_time' => date('Y-m-d H:i:s', strtotime($request->pick_up_date . ' ' . $request->pick_up_time)),
-            'return_date_time' => date('Y-m-d H:i:s', strtotime($request->return_date . ' ' . $request->return_time)),
+            'pickup_date_time' => $request->pick_up_date,
+            'return_date_time' => $request->return_date,
             'request' => $request->message,
         ]);
 
@@ -81,6 +80,7 @@ class BookingController extends Controller
 
     public function bookings(Request $request)
     {
+
         $request->validate([
             'car' => 'required|exists:cars,id',
             'pick_up_location' => 'required|exists:locations,id',
