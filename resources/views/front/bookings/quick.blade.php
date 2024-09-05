@@ -49,6 +49,8 @@
 
 
                                 <form name="contactForm" id='booking_form' class="form-s2 row g-4" method="post"
+                                    {{-- multitype --}}
+                                 enctype="multipart/form-data"
                                     action="{{ route('bookings.quick.store') }}">
                                     @csrf
                                     <div class="col-lg-6 d-light">
@@ -143,7 +145,8 @@
                                     <div class="col-lg-6">
                                         <h4>Enter Your Details</h4>
                                         <div class="row g-4">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
+                                                <h5>Name</h5>
                                                 <div class="field-set">
                                                     @php
                                                         $value = old('name', $user ? $user->name : null);
@@ -154,7 +157,8 @@
                                                         placeholder="Your Name" required>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
+                                                <h5>Email</h5>
                                                 <div class="field-set">
                                                     @php
                                                         $value = old('email', $user ? $user->email : null);
@@ -164,7 +168,8 @@
                                                         placeholder="Your Email" required>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
+                                                <h5>Phone</h5>
                                                 <div class="field-set">
                                                     @php
                                                         $value = old('phone', $user ? $user->phone : null);
@@ -175,7 +180,129 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
+                                                <h5>Address</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old('address', $user ? $user->address : null);
+                                                    @endphp
+                                                    <input type="text" name="address" id="address" class="form-control"
+                                                        value="{{ $value }}" placeholder="Your Address" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <h5>Date of Birth</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old(
+                                                            'date_of_birth',
+                                                            $user ? $user->date_of_birth : null,
+                                                        );
+                                                    @endphp
+                                                    <input type="date" name="date_of_birth" id="date_of_birth"
+                                                        class="form-control" value="{{ $value }}"
+                                                        placeholder="Your Date of Birth" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <h5>License Number</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old(
+                                                            'driver_license_number',
+                                                            $user ? $user->driver_license_number : null,
+                                                        );
+                                                    @endphp
+                                                    <input type="text" name="driver_license_number"
+                                                        id="driver_license_number" class="form-control"
+                                                        value="{{ $value }}"
+                                                        placeholder="Your Driver License Number" required>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6">
+                                                <h5>License State</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old(
+                                                            'driver_license_state',
+                                                            $user ? $user->driver_license_state : null,
+                                                        );
+                                                    @endphp
+                                                    <input type="text" name="driver_license_state"
+                                                        id="driver_license_state" class="form-control"
+                                                        value="{{ $value }}"
+                                                        placeholder="Your Driver License State" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <h5>License Front Image</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old(
+                                                            'driver_license_front_image',
+                                                            $user ? $user->driver_license_front_image : null,
+                                                        );
+                                                    @endphp
+                                                    <input type="file" name="driver_license_front_image"
+                                                        id="driver_license_front_image" class="form-control"
+                                                        value="{{ $value }}" accept="image/*"
+                                                        placeholder="Your Driver License State" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <h5>License Back Image</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old(
+                                                            'driver_license_back_image',
+                                                            $user ? $user->driver_license_back_image : null,
+                                                        );
+                                                    @endphp
+                                                    <input type="file" name="driver_license_back_image"
+                                                        id="driver_license_front_image" class="form-control"
+                                                        value="{{ $value }}" accept="image/*"
+                                                        placeholder="Your Driver License State" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <h5>Income Proof</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old(
+                                                            'proof_of_income',
+                                                            $user ? $user->proof_of_income : null,
+                                                        );
+                                                    @endphp
+                                                    <input type="file" name="proof_of_income" id="proof_of_income"
+                                                        class="form-control"
+                                                        placeholder="Your Driver License State" required>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6">
+                                                <h5>How did you hear about us?</h5>
+                                                <div class="field-set">
+                                                    @php
+                                                        $value = old('lead_from', $user ? $user->lead_from : null);
+                                                    @endphp
+                                                    <input type="text" name="lead_from" id="lead_from"
+                                                        class="form-control" value="{{ $value }}"
+                                                        placeholder="How did you hear about us?">
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="col-lg-6">
+                                                <h5>Request</h5>
                                                 <div class="field-set">
                                                     <textarea name="message" id="message" class="form-control" placeholder="Do you have any request?">{{ old('message') }}</textarea>
                                                 </div>
@@ -186,181 +313,183 @@
 
 
 
-                                    <div class="col-lg-3">
-                                        <input type='submit' id='send_message' value='Submit'
-                                            class="btn-main btn-fullwidth">
-                                    </div>
-
-
-                                </form>
-                            @elseif($bookingCreated)
-                                {{-- unset session --}}
-                                @php
-                                    session()->forget('bookingCreated');
-                                @endphp
-                                <div id="success_message" class='success s2' style="display: block !important">
-                                    <div class="row">
-                                        <div class="col-lg-8 offset-lg-2 text-light text-center">
-                                            <h3 class="mb-2">Congratulations! Your booking has been sent successfully. We
-                                                will contact you shortly.</h3>
-                                            Refresh this page if you want to booking again.
-                                            <div class="spacer-20"></div>
-                                            <a class="btn-main btn-black" href="{{ route('bookings.quick') }}">Reload
-                                                this
-                                                page</a>
+                                    <div class="row justify-content-between">
+                                        <div class="col-lg-3">
+                                            <input type='submit' id='send_message' value='Submit'
+                                                class="btn-main btn-fullwidth">
                                         </div>
                                     </div>
+                        </div>
+
+                        </form>
+                    @elseif($bookingCreated)
+                        {{-- unset session --}}
+                        @php
+                            session()->forget('bookingCreated');
+                        @endphp
+                        <div id="success_message" class='success s2' style="display: block !important">
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 text-light text-center">
+                                    <h3 class="mb-2">Congratulations! Your booking has been sent successfully. We
+                                        will contact you shortly.</h3>
+                                    Refresh this page if you want to booking again.
+                                    <div class="spacer-20"></div>
+                                    <a class="btn-main btn-black" href="{{ route('bookings.quick') }}">Reload
+                                        this
+                                        page</a>
                                 </div>
-                            @endif
-                            <div id="error_message" class='error'>
-                                Sorry there was an error sending your form.
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="spacer-double"></div>
-
-                <div class="row text-light">
-                    <div class="col-lg-12">
-                        <div class="container-timeline">
-                            <ul>
-                                <li>
-                                    <h4>Choose a vehicle</h4>
-                                    <p>Unlock unparalleled adventures and memorable journeys with our vast fleet of vehicles
-                                        tailored to suit every need, taste, and destination.</p>
-                                </li>
-                                <li>
-                                    <h4>Pick location &amp; date</h4>
-                                    <p>Pick your ideal location and date, and let us take you on a journey filled with
-                                        convenience, flexibility, and unforgettable experiences.</p>
-                                </li>
-                                <li>
-                                    <h4>Make a booking</h4>
-                                    <p>Secure your reservation with ease, unlocking a world of possibilities and embarking
-                                        on your next adventure with confidence.</p>
-                                </li>
-                                <li>
-                                    <h4>Sit back &amp; relax</h4>
-                                    <p>Hassle-free convenience as we take care of every detail, allowing you to unwind and
-                                        embrace a journey filled comfort.</p>
-                                </li>
-                            </ul>
+                        @endif
+                        <div id="error_message" class='error'>
+                            Sorry there was an error sending your form.
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section aria-label="section" class="pt40 pb40 text-light bg-color">
-            <div class="wow fadeInRight d-flex">
-                <div class="de-marquee-list s2">
-                    <div class="d-item">
-                        <span class="d-item-txt">SUV</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Hatchback</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Crossover</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Convertible</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sedan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sports Car</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Coupe</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Station Wagon</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Truck</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivans</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Exotic Cars</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                    </div>
-                </div>
+            <div class="spacer-double"></div>
 
-                <div class="de-marquee-list s2">
-                    <div class="d-item">
-                        <span class="d-item-txt">SUV</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Hatchback</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Crossover</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Convertible</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sedan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sports Car</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Coupe</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Station Wagon</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Truck</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivans</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Exotic Cars</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
+            <div class="row text-light">
+                <div class="col-lg-12">
+                    <div class="container-timeline">
+                        <ul>
+                            <li>
+                                <h4>Choose a vehicle</h4>
+                                <p>Unlock unparalleled adventures and memorable journeys with our vast fleet of vehicles
+                                    tailored to suit every need, taste, and destination.</p>
+                            </li>
+                            <li>
+                                <h4>Pick location &amp; date</h4>
+                                <p>Pick your ideal location and date, and let us take you on a journey filled with
+                                    convenience, flexibility, and unforgettable experiences.</p>
+                            </li>
+                            <li>
+                                <h4>Make a booking</h4>
+                                <p>Secure your reservation with ease, unlocking a world of possibilities and embarking
+                                    on your next adventure with confidence.</p>
+                            </li>
+                            <li>
+                                <h4>Sit back &amp; relax</h4>
+                                <p>Hassle-free convenience as we take care of every detail, allowing you to unwind and
+                                    embrace a journey filled comfort.</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
+    </div>
+    </section>
+
+    <section aria-label="section" class="pt40 pb40 text-light bg-color">
+        <div class="wow fadeInRight d-flex">
+            <div class="de-marquee-list s2">
+                <div class="d-item">
+                    <span class="d-item-txt">SUV</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Hatchback</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Crossover</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Convertible</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sedan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sports Car</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Coupe</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Station Wagon</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Truck</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivans</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Exotic Cars</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="de-marquee-list s2">
+                <div class="d-item">
+                    <span class="d-item-txt">SUV</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Hatchback</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Crossover</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Convertible</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sedan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sports Car</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Coupe</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Station Wagon</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Truck</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivans</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Exotic Cars</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     </div>
@@ -450,7 +579,7 @@
             const formattedDateTime = now.toISOString().slice(0, 16);
 
 
-             // Set the min attribute to the current date and time
+            // Set the min attribute to the current date and time
             document.getElementById('datePickerPick').min = formattedDateTime;
             document.getElementById('datePickerReturn').min = formattedDateTime;
 

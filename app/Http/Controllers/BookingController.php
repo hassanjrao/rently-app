@@ -50,6 +50,14 @@ class BookingController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'nullable|string|max:255',
+            'address'=>'required',
+            'date_of_birth'=>'required|date',
+            'driver_license_number'=>'required',
+            'driver_license_state'=>'required',
+            'lead_from'=>'nullable',
+            'driver_license_front_image'=>'required|image',
+            'driver_license_back_image'=>'required|image',
+            'proof_of_income'=>'required|image',
         ]);
 
         $user = User::firstOrCreate([
@@ -70,6 +78,15 @@ class BookingController extends Controller
             'pickup_date_time' => $request->pick_up_date,
             'return_date_time' => $request->return_date,
             'request' => $request->message,
+            'address'=>$request->address,
+            'date_of_birth'=>$request->date_of_birth,
+            'driver_license_number'=>$request->driver_license_number,
+            'driver_license_state'=>$request->driver_license_state,
+            'lead_from'=>$request->lead_from,
+            'driver_license_front_image'=>$request->file('driver_license_front_image')->store('bookings'),
+            'driver_license_back_image'=>$request->file('driver_license_back_image')->store('bookings'),
+            'proof_of_income'=>$request->file('proof_of_income')->store('bookings'),
+
         ]);
 
         // add bookingCreated in session
