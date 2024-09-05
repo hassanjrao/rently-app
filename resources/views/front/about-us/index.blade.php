@@ -55,8 +55,8 @@
 
     <section id="section-img-with-tab">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 offset-lg-7">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-5">
 
                     <h2>Only Quality For Clients to We Offer Fast Approvals To Get You On The Road.</h2>
                     <div class="spacer-20"></div>
@@ -69,10 +69,14 @@
                    </ul>
 
                 </div>
+                <div class="col-lg-7">
+                    <img src="{{ asset('front-assets/images/background/5.jpg') }}" alt="about us" class="img-fluid" style="width: 100%">
+                </div>
+
+
             </div>
         </div>
 
-        <div class="image-container col-md-6 pull-right" data-bgimage="url({{  asset('front-assets/images/background/5.jpg')}}) center"></div>
     </section>
 
 
