@@ -100,23 +100,25 @@
                                             href="{{ route('home') }}">Home</a>
 
                                     </li>
+                                    <li><a class="menu-item {{ request()->is('bookings/quick') ? 'active' : '' }}"
+                                        href="{{ route('bookings.quick') }}">Quick Booking</a>
+
+                                </li>
                                     <li><a class="menu-item {{ request()->is('cars*') ? 'active' : '' }}"
                                             href="{{ route('cars.index') }}">Cars</a>
 
                                     </li>
-                                    <li><a class="menu-item {{ request()->is('bookings/quick') ? 'active' : '' }}"
-                                            href="{{ route('bookings.quick') }}">Quick Booking</a>
+                                    <li><a class="menu-item {{ request()->is('contact-us') ? 'active' : '' }}"
+                                        href="{{ route('contact-us.index') }}">Contact Us</a></li>
 
-                                    </li>
                                     <li><a class="menu-item {{ request()->is('about-us') ? 'active' : '' }}"
                                             href="{{ route('about-us') }}">About Us</a></li>
-                                    <li><a class="menu-item {{ request()->is('contact-us') ? 'active' : '' }}"
-                                            href="{{ route('contact-us.index') }}">Contact Us</a></li>
 
-                                    <li><a class="menu-item {{ request()->is('news*') ? 'active' : '' }}"
+
+                                    {{-- <li><a class="menu-item {{ request()->is('news*') ? 'active' : '' }}"
                                             href="{{ route('news.index') }}">News</a>
 
-                                    </li>
+                                    </li> --}}
 
                                 </ul>
                             </div>
