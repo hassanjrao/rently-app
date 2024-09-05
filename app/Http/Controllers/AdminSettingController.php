@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class AdminSettingController extends Controller
 {
@@ -94,6 +95,10 @@ class AdminSettingController extends Controller
             'twitter'=>$request->twitter,
             'about'=>$request->about,
         ]);
+
+        Artisan::call('config:cache');
+        Artisan::call('cache:clear');
+        Artisan::call('optimize:clear');
 
         return redirect()->route('admin.settings.index')->withToastSuccess('Updated successfully');
     }
