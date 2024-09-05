@@ -47,7 +47,7 @@
                     </p>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
@@ -75,6 +75,66 @@
         <div class="image-container col-md-6 pull-right" data-bgimage="url({{  asset('front-assets/images/background/5.jpg')}}) center"></div>
     </section>
 
+
+    <section aria-label="section">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>Contact Us</h2>
+                    <div class="spacer-20"></div>
+                </div>
+            </div>
+            <div class="row  d-flex justify-content-center">
+
+                <div class="col-lg-8 mb-sm-30">
+
+
+                    <form id="contact_form" class="form-border" method="post" action="{{ route('contact-us.store') }}">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-4 mb10">
+                                <div class="field-set">
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb10">
+                                <div class="field-set">
+                                    <input type="email" name="email" id="email" class="form-control"
+                                        placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb10">
+                                <div class="field-set">
+                                    <input type="tel" name="phone" id="phone" class="form-control"
+                                        placeholder="Your Phone" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-set mb20">
+                            <textarea name="message" id="message" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        {{-- <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div> --}}
+                        <div id='submit' class="mt20 d-flex justify-content-center w-100">
+                            <input type='submit' id='send_message' value='Send Message' class="btn-main">
+                        </div>
+
+                        <div id="success_message" class='success'>
+                            Your message has been sent successfully. Refresh this page if you want to send more
+                            messages.
+                        </div>
+                        <div id="error_message" class='error'>
+                            Sorry there was an error sending your form.
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
 
 </div>
 
