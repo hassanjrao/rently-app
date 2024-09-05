@@ -278,6 +278,15 @@
                             </a>
                         </li>
 
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/payments*') ? ' active' : '' }}"
+                                href="{{ route('admin.payments.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Payments</span>
+                            </a>
+                        </li>
+
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('admin/users*') ? ' active' : '' }}"
                                 href="{{ route('admin.users.index') }}">

@@ -18,6 +18,7 @@
             <li><a href="{{ route('profile.dashboard') }}" class="{{ request()->is('profile/dashboard') ? 'active': '' }}"><i class="fa fa-home"></i>Dashboard</a></li>
             <li><a href="{{ route('profile.index') }}" class="{{ request()->is('profile') ? 'active': '' }}"><i class="fa fa-user"></i>My Profile</a></li>
             <li><a href="{{ route('profile.bookings') }}" class="{{ request()->is('profile/bookings') ? 'active': '' }}"><i class="fa fa-calendar"></i>My Bookings</a></li>
+            <li><a href="{{ route('profile.payments') }}" class="{{ request()->is('profile/payments') ? 'active': '' }}"><i class="fa fa-calendar"></i>My Payments</a></li>
             <li><a style="cursor: pointer" onclick="document.getElementById('logout-form').submit()"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
     </div>

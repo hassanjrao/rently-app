@@ -42,6 +42,15 @@ class UserProfileController extends Controller
         return view('front.profile.bookings',compact('bookings'));
     }
 
+    public function userPayments(){
+        $user=auth()->user();
+
+        $payments=$user->payments()->get();
+
+
+        return view('front.profile.payments',compact('payments'));
+    }
+
     public function update(Request $request){
         $request->validate([
             'name' => 'required',

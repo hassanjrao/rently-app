@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             FaqSeeder::class,
             PrivacyPolicySeeder::class,
             TermsConditionSeeder::class,
+            PaymentMethodSeeder::class,
         ]);
     }
 }

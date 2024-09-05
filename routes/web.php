@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminFeatureController;
 use App\Http\Controllers\AdminFuelTypeController;
 use App\Http\Controllers\AdminLocationController;
 use App\Http\Controllers\AdminNewsController;
+use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\AdminPrivacyController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminReviewController;
@@ -73,6 +74,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profile/dashboard', [UserProfileController::class, 'dashboard'])->name('profile.dashboard');
 
     Route::get('profile/bookings', [UserProfileController::class, 'userBookings'])->name('profile.bookings');
+
+    Route::get('profile/payments', [UserProfileController::class, 'userPayments'])->name('profile.payments');
 });
 
 
@@ -135,6 +138,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource('contact-us-requests', AdminContactUsRequestController::class)->except(['show', 'create', 'store','edit']);
 
 
+
+    Route::resource('payments', AdminPaymentController::class)->except(['show']);
 
 
 });
