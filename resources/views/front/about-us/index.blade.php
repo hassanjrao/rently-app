@@ -35,7 +35,8 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInRight">
-                    <h2>We offer customers a wide range of <span class="id-color">commercial cars</span> and <span class="id-color">luxury cars</span> for any occasion.</h2>
+                    <h2>We offer customers a wide  <span class="id-color">range of vehicles</span> to get you where you  <span class="id-color">need to go.</span>
+                    </h2>
                 </div>
                 <div class="col-lg-6 wow fadeInRight" data-wow-delay=".25s">
                     <p>
@@ -100,28 +101,6 @@
         <div class="image-container col-md-6 pull-right" data-bgimage="url({{  asset('front-assets/images/background/5.jpg')}}) center"></div>
     </section>
 
-    <section id="section-call-to-action" class="bg-color-2 pt60 pb60 text-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <h2 class="s2">Call us for further information. {{ config('app.name') }} customer care is here to help you anytime.</h2>
-                </div>
-
-                <div class="col-lg-4 text-lg-center text-sm-center">
-                    <div class="phone-num-big">
-                        <i class="fa fa-phone"></i>
-                        <span class="pnb-text">
-                            Call Us Now
-                        </span>
-                        <span class="pnb-num">
-                            {{ $settings->phone }}
-                        </span>
-                    </div>
-                    <a href="{{ route('contact-us.index') }}" class="btn-main">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
 </div>
 
