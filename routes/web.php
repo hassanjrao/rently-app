@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminCarEngineController;
 use App\Http\Controllers\AdminCarMakeController;
 use App\Http\Controllers\AdminCarModelController;
+use App\Http\Controllers\AdminContactUsRequestController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDriveTypeController;
 use App\Http\Controllers\AdminFaqController;
@@ -125,6 +126,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource('users', AdminUserController::class)->except(['show', 'create', 'store','edit']);
 
     Route::resource('news', AdminNewsController::class)->except(['show']);
+
+
+    Route::resource('contact-us-requests', AdminContactUsRequestController::class)->except(['show', 'create', 'store','edit']);
+
 
 
 
