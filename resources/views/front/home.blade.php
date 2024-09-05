@@ -356,7 +356,7 @@
         </section>
 
 
-        <section id="section-testimonials" class="no-top no-bottom">
+        {{-- <section id="section-testimonials" class="no-top no-bottom">
             <div class="container-fluid">
                 <div class="row g-2 p-2 align-items-center">
 
@@ -416,7 +416,7 @@
 
                 </div>
             </div>
-        </section>
+        </section> --}}
 
 
 
