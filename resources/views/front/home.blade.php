@@ -8,6 +8,22 @@
     });
 @endphp
 
+@section('styles')
+
+    {{-- media query for mobile view --}}
+    <style>
+        @media (max-width: 768px) {
+            .herospacer{
+                display: none !important;
+            }
+            #content section:first-of-type{
+                padding-top: 58px !important;
+            }
+        }
+    </style>
+
+@endsection
+
 @section('content')
     <!-- Hero -->
     <div class="no-bottom" id="content">
@@ -17,8 +33,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12 text-light">
-                        <div class="spacer-double"></div>
-                        <div class="spacer-double"></div>
+                        <div class="spacer-double herospacer"></div>
+                        <div class="spacer-double herospacer"></div>
                         <h1 class="mb-2">Ready to
                             <span class="id-color">ride a while</span>? You're at the
                             right place.
@@ -70,7 +86,8 @@
 
                                             <div class="col-lg-6 mb20">
                                                 <h5>Car Make</h5>
-                                                <select name="car_makes" id="car_makes" class="form-select" onchange="carMakeSelected(this)">
+                                                <select name="car_makes" id="car_makes" class="form-select"
+                                                    onchange="carMakeSelected(this)">
                                                     <option selected disabled value="">Select Car Make</option>
                                                     @foreach ($carMakes as $make)
                                                         <option value="{{ $make->id }}">{{ $make->name }}</option>
@@ -128,7 +145,8 @@
                                     </li>
                                     <li>
                                         <h4>Hit the Road in Style.</h4>
-                                        <p>Once approved, we'll work diligently to have your vehicle ready for pickup or delivery as soon as
+                                        <p>Once approved, we'll work diligently to have your vehicle ready for pickup or
+                                            delivery as soon as
                                             possible. Sit back, relax, and get ready for an unforgehable journey.</p>
                                     </li>
                                 </ul>
@@ -266,26 +284,21 @@
                 <div class="row g-2 p-2 align-items-center">
 
                     @foreach ($reviews as $review)
-
-
-                    <div class="col-md-4">
-                        <div class="de-image-text">
-                            <div class="d-text">
-                                <div class="d-quote id-color"><i class="fa fa-quote-right"></i></div>
-                                <h4>{{ $review->review_title }}</h4>
-                                <blockquote>
-                                    <p>{{ $review->review }}</p>
-                                    <span class="by">
-                                        {{ $review->name }}
-                                    </span>
-                                </blockquote>
+                        <div class="col-md-4">
+                            <div class="de-image-text">
+                                <div class="d-text">
+                                    <div class="d-quote id-color"><i class="fa fa-quote-right"></i></div>
+                                    <h4>{{ $review->review_title }}</h4>
+                                    <blockquote>
+                                        <p>{{ $review->review }}</p>
+                                        <span class="by">
+                                            {{ $review->name }}
+                                        </span>
+                                    </blockquote>
+                                </div>
+                                <img src="{{ $review->image_url }}" class="img-fluid" alt="">
                             </div>
-                            <img src="{{ $review->image_url }}" class="img-fluid"
-                                alt="">
                         </div>
-                    </div>
-
-
                     @endforeach
 
 
@@ -309,7 +322,8 @@
                     <div class="col-lg-8 mb-sm-30">
 
 
-                        <form id="contact_form" class="form-border" method="post" action="{{ route('contact-us.store') }}">
+                        <form id="contact_form" class="form-border" method="post"
+                            action="{{ route('contact-us.store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4 mb10">
@@ -364,11 +378,10 @@
 
 @push('scripts')
     <script>
-
         var carModels = @json($carModels);
 
-        function carMakeSelected(e){
-            console.log(e.value,carModels);
+        function carMakeSelected(e) {
+            console.log(e.value, carModels);
             var makeId = e.value;
             var models = carModels.filter(model => model.car_make_id == makeId);
             var modelSelect = document.getElementById('car_models');
