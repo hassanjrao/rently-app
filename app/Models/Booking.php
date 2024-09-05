@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Booking extends Model
 {
@@ -12,7 +13,19 @@ class Booking extends Model
 
     protected $guarded=[];
 
-    protected $appends=['booking_id'];
+    protected $appends=['booking_id','license_front_image_url','license_back_image_url','proof_of_income_url','proof_of_income_url'];
+
+    public function getLicenseFrontImageUrlAttribute(){
+        return $this->driver_license_front_image? Storage::url($this->driver_license_front_image):null;
+    }
+
+    public function getLicenseBackImageUrlAttribute(){
+        return $this->driver_license_back_image? Storage::url($this->driver_license_back_image):null;
+    }
+
+    public function getProofOfIncomeUrlAttribute(){
+        return $this->proof_of_income? Storage::url($this->proof_of_income):null;
+    }
 
     public function getBookingIdAttribute(){
         return 'BK-'.str_pad($this->id, 5, '0', STR_PAD_LEFT);

@@ -35,8 +35,16 @@
                                 <th>#</th>
                                 <th>User Name</th>
                                 <th>User Phone</th>
+                                <th>Address</th>
+                                <th>DOB</th>
+                                <th>License Number</th>
+                                <th>License State</th>
+                                <th>License Front</th>
+                                <th>License Back</th>
+                                <th>Income Proof</th>
+                                <th>Lead From</th>
                                 <th>Car</th>
-                                <th >Status</th>
+                                <th>Status</th>
                                 <th>Pickup Date Time</th>
                                 <th>Return Date Time</th>
                                 <th>Pickup Location</th>
@@ -58,6 +66,32 @@
                                     <td>{{ $ind + 1 }}</td>
                                     <td>{{ $booking->user->name }}</td>
                                     <td>{{ $booking->user->phone }}</td>
+                                    <td>{{ $booking->address }}</td>
+                                    <td>{{ $booking->date_of_birth }}</td>
+                                    <td>{{ $booking->driver_license_number }}</td>
+                                    <td>{{ $booking->driver_license_state }}</td>
+                                    <td>
+                                        <a href="{{ $booking->license_front_image_url }}" target="_blank">
+                                            <img src="{{ $booking->license_front_image_url }}" alt=""
+                                                style="width: 100px">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ $booking->license_back_image_url }}" target="_blank">
+                                            <img src="{{ $booking->license_back_image_url }}" alt=""
+                                                style="width: 100px">
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <a href="{{ $booking->proof_of_income_url }}" target="_blank">
+                                            <img src="{{ $booking->proof_of_income_url }}" alt=""
+                                                style="width: 100px">
+                                        </a>
+                                    </td>
+
+                                    <td>{{ $booking->lead_from }}</td>
+
                                     <td>{{ $booking->car->name }}</td>
                                     <td>
 
