@@ -49,8 +49,7 @@
 
 
                                 <form name="contactForm" id='booking_form' class="form-s2 row g-4" method="post"
-                                    {{-- multitype --}}
-                                 enctype="multipart/form-data"
+                                    {{-- multitype --}} enctype="multipart/form-data"
                                     action="{{ route('bookings.quick.store') }}">
                                     @csrf
                                     <div class="col-lg-6 d-light">
@@ -186,8 +185,9 @@
                                                     @php
                                                         $value = old('address', $user ? $user->address : null);
                                                     @endphp
-                                                    <input type="text" name="address" id="address" class="form-control"
-                                                        value="{{ $value }}" placeholder="Your Address" required>
+                                                    <input type="text" name="address" id="address"
+                                                        class="form-control" value="{{ $value }}"
+                                                        placeholder="Your Address" required>
                                                 </div>
                                             </div>
 
@@ -281,8 +281,8 @@
                                                         );
                                                     @endphp
                                                     <input type="file" name="proof_of_income" id="proof_of_income"
-                                                        class="form-control"
-                                                        placeholder="Your Driver License State" required>
+                                                        class="form-control" placeholder="Your Driver License State"
+                                                        required>
                                                 </div>
                                             </div>
 
@@ -314,6 +314,31 @@
 
 
                                     <div class="row justify-content-between">
+                                        <div class="col-lg-12 mb-4 mt-4">
+                                            {{-- agreement checkbox --}}
+                                            <div class="de_form">
+
+                                                <div class="de_checkbox">
+                                                    <input required id="agree" name="agree" type="checkbox">
+                                                    <label for="agree">
+                                                        *By entering your phone number you agree to be contacted via SMS for
+                                                        information, offers, and
+                                                        advertsing. We will NEVER spam you and you can opt-out of out
+                                                        messages
+                                                        at anytime. Message
+                                                        & data rates apply. Message frequency varies. I have read and agree
+                                                        to
+                                                        the Terms and
+                                                        Conditions, Consent to Electronic Communications and the Company
+                                                        Privacy
+                                                        Notice.
+                                                    </label>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
                                         <div class="col-lg-3">
                                             <input type='submit' id='send_message' value='Submit'
                                                 class="btn-main btn-fullwidth">
