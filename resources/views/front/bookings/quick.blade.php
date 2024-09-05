@@ -129,8 +129,8 @@
                                             </div>
 
                                             <div class="col-lg-6">
-                                                <h4>Your Total</h4>
-                                                <h5 id="total">Total:
+                                                <h4>Subtotal (excluding taxes and fees):</h4>
+                                                <h5 id="total">
                                                     {{ config('app.currency_symbol') . $selectedCar->daily_rate }}
                                                 </h5>
                                             </div>
@@ -452,7 +452,7 @@
         function setDailyRate(el) {
             var selectedOption = el.options[el.selectedIndex];
             dailyRate = selectedOption.getAttribute('data-dailyrate');
-            $('#total').text('Total: ' + dailyRate + ' {{ config('app.currency_symbol') }}');
+            $('#total').text( dailyRate + ' {{ config('app.currency_symbol') }}');
         }
 
         function pickupDateSelected(el) {
