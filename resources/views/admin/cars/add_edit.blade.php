@@ -58,6 +58,48 @@
 
                             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                                 <?php
+                                $value = old('car_make', $car ? $car->car_make_id : null);
+
+                                ?>
+                                <label class="form-label" for="label"> Make <span class="text-danger">*</span></label>
+
+                                <select required class="form-select" id="car_make" name="car_make" onchange="makeSelected(this)">
+                                    <option value="">Select Make</option>
+                                    @foreach ($carMakes as $car_make)
+                                        <option value="{{ $car_make->id }}"
+                                            @if ($car_make->id == $value) selected @endif>
+                                            {{ $car_make->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('car_make')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                                <?php
+                                $value = old('car_model', $car ? $car->car_model_id : null);
+
+                                ?>
+                                <label class="form-label" for="label"> Model <span class="text-danger">*</span></label>
+
+                                <select required class="form-select" id="car_model" name="car_model">
+                                    <option value="">Select Model</option>
+
+                                </select>
+
+                                @error('car_make')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                                <?php
                                 $value = old('daily_rate', $car ? $car->daily_rate : null);
 
                                 ?>
@@ -492,5 +534,23 @@
 
 @section('js_after')
 
+<script>
+    var carModels = @json($carModels);
+
+    function makeSelected(select) {
+        var selectedMake = select.value;
+        var models = carModels.filter(carModel => carModel.car_make_id == selectedMake);
+
+        var modelSelect = document.getElementById('car_model');
+        modelSelect.innerHTML = '<option value="">Select Model</option>';
+
+        models.forEach(model => {
+            var option = document.createElement('option');
+            option.value = model.id;
+            option.text = model.name;
+            modelSelect.add(option);
+        });
+    }
+</script>
 
 @endsection

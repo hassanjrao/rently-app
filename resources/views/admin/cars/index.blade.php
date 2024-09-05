@@ -35,6 +35,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Make</th>
+                                <th>Model</th>
                                 <th>Main Image</th>
                                 <th>Description</th>
                                 <th>Daily Rate</th>
@@ -67,6 +69,8 @@
 
                                     <td>{{ $ind + 1 }}</td>
                                     <td>{{ $car->name }}</td>
+                                    <td>{{ $car->carMake->name }}</td>
+                                    <td>{{ $car->carModel->name }}</td>
                                     <td><img src="{{ $car->main_image_url }}" alt="" width="100"></td>
                                     <td>{{ $car->description }}</td>
                                     <td>{{ $car->daily_rate }}</td>

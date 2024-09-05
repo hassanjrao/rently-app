@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactUsRequest;
-use App\Models\Faq;
+use App\Models\CarMake;
+use App\Models\CarModel;
 use Illuminate\Http\Request;
 
-class ContactUsController extends Controller
+class AdminCarModelController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $firstColumnFaqs=Faq::latest()->take(ceil(Faq::count()/2))->get();
-        $secondColumnFaqs=Faq::latest()->skip(ceil(Faq::count()/2))->take(Faq::count())->get();
+        $carModels=CarModel::latest()
+        ->with('carMake')
+        ->get();
 
-
-        return view('front.contact-us.index',compact('firstColumnFaqs','secondColumnFaqs'));
+        return view('admin.car-models.index',compact('carModels'));
     }
 
     /**
@@ -29,7 +29,12 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        //
+        $carModel=null;
+
+
+        $carMakes=CarMake::latest()->get();
+
+        return view('admin.car-models.add_edit',compact('carModel','carMakes'));
     }
 
     /**
@@ -42,19 +47,15 @@ class ContactUsController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'email'=>'required|email',
-            'phone'=>'required',
-            'message'=>'required'
+            'car_make'=>'required',
         ]);
 
-        ContactUsRequest::create([
+        CarModel::create([
             'name'=>$request->name,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'message'=>$request->message
+            'car_make_id'=>$request->car_make,
         ]);
 
-        return redirect()->back()->withToastSuccess('Successfully submitted your request. We will get back to you soon.');
+        return redirect()->route('admin.vehicle-models.index')->withToastSuccess('Created successfully');
     }
 
     /**
@@ -76,7 +77,11 @@ class ContactUsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carModel=CarModel::findorfail($id);
+
+        $carMakes=CarMake::latest()->get();
+
+        return view('admin.car-models.add_edit',compact('carModel','carMakes'));
     }
 
     /**
@@ -88,7 +93,17 @@ class ContactUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+        ]);
+
+        $carmodels=CarModel::findorfail($id);
+
+        $carmodels->update([
+            'name'=>$request->name,
+        ]);
+
+        return redirect()->route('admin.vehicle-models.index')->withToastSuccess('Updated successfully');
     }
 
     /**
@@ -99,6 +114,8 @@ class ContactUsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CarModel::findorfail($id)->delete();
+
+        return back()->withToastSuccess('Deleted successfully');
     }
 }

@@ -33,7 +33,7 @@
 
         <section aria-label="section">
             <div class="container">
-                <div class="row g-custom-x">
+                <div class="row g-custom-x align-items-center">
 
                     <div class="col-lg-8 mb-sm-30">
 
@@ -105,6 +105,55 @@
             </div>
 
         </section>
+
+        <section id="section-faq">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2>Have Any Questions?</h2>
+                        <div class="spacer-20"></div>
+                    </div>
+                </div>
+                <div class="row g-custom-x">
+                    <div class="col-md-6 wow fadeInUp">
+                        <div class="accordion secondary">
+                            <div class="accordion-section">
+                                @foreach ($firstColumnFaqs as $faq)
+                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
+                                        {{ $faq->question }}
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
+                                        <p>
+                                            {{ $faq->answer }}
+                                        </p>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow fadeInUp">
+                        <div class="accordion secondary">
+                            <div class="accordion-section">
+
+                                @foreach ($secondColumnFaqs as $faq)
+                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
+                                        {{ $faq->question }}
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
+                                        <p>
+                                            {{ $faq->answer }}
+                                        </p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
     </div>
 

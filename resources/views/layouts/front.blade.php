@@ -105,7 +105,7 @@
 
                                 </li>
                                     <li><a class="menu-item {{ request()->is('cars*') ? 'active' : '' }}"
-                                            href="{{ route('cars.index') }}">Cars</a>
+                                            href="{{ route('cars.index') }}">Rentals</a>
 
                                     </li>
                                     <li><a class="menu-item {{ request()->is('contact-us') ? 'active' : '' }}"
@@ -186,7 +186,7 @@
                             <div class="col-lg-6">
                                 <div class="widget">
                                     <ul>
-                                        <li><a href="{{ route('cars.index') }}">Cars</a></li>
+                                        <li><a href="{{ route('cars.index') }}">Rentals</a></li>
                                         <li><a href="{{ route('bookings.quick') }}">Quick Booking</a></li>
                                         <li><a href="{{ route('news.index') }}">News</a></li>
                                         <li><a href="{{ route('contact-us.index') }}">Contact Us</a></li>

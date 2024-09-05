@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminBodyTypeController;
 use App\Http\Controllers\AdminBookingController;
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminCarEngineController;
+use App\Http\Controllers\AdminCarMakeController;
+use App\Http\Controllers\AdminCarModelController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDriveTypeController;
 use App\Http\Controllers\AdminFaqController;
@@ -89,6 +91,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource('body-types', AdminBodyTypeController::class)->except(['show']);
 
     Route::resource('vehicle-types', AdminVehicleTypeController::class)->except(['show']);
+
+    Route::resource('vehicle-make', AdminCarMakeController::class)->except(['show']);
+
+    Route::resource('vehicle-models', AdminCarModelController::class)->except(['show']);
 
     Route::resource('car-engines', AdminCarEngineController::class)->except(['show']);
 

@@ -4,7 +4,7 @@
 <div class="de-item mb30">
     <div class="d-img">
         <img src="{{ $car->main_image_url }}"
-            class="img-fluid" alt="">
+            class="img-fluid" alt="" style="width: 100%; height: 185px;">
     </div>
     <div class="d-info">
         <div class="d-text">

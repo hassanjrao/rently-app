@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\BodyType;
 use App\Models\Car;
 use App\Models\CarEngine;
+use App\Models\CarMake;
+use App\Models\CarModel;
 use App\Models\Faq;
 use App\Models\News;
 use App\Models\PrivacyPolicy;
@@ -47,7 +49,10 @@ class HomeController extends Controller
         $firstColumnFaqs=Faq::latest()->take(ceil(Faq::count()/2))->get();
         $secondColumnFaqs=Faq::latest()->skip(ceil(Faq::count()/2))->take(Faq::count())->get();
 
-        return view('front.home',compact('cars','latestNews','vehicleTypes','bodyTypes','seats','carEngines','firstColumnFaqs','secondColumnFaqs'));
+        $carMakes=CarMake::all();
+        $carModels=CarModel::all();
+
+        return view('front.home',compact('cars','latestNews','vehicleTypes','bodyTypes','seats','carEngines','firstColumnFaqs','secondColumnFaqs','carMakes','carModels'));
     }
 
 

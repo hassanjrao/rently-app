@@ -197,10 +197,18 @@
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('admin/car-engines*') ? ' active' : '' }}"
-                                href="{{ route('admin.car-engines.index') }}">
+                            <a class="nav-main-link{{ request()->is('admin/vehicle-make*') ? ' active' : '' }}"
+                                href="{{ route('admin.vehicle-make.index') }}">
                                 <i class="nav-main-link-icon si si-cursor"></i>
-                                <span class="nav-main-link-name">Car Engines</span>
+                                <span class="nav-main-link-name">Vehicle Make</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/vehicle-models*') ? ' active' : '' }}"
+                                href="{{ route('admin.vehicle-models.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Vehicle Models</span>
                             </a>
                         </li>
 

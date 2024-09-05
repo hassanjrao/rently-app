@@ -65,4 +65,14 @@ class Car extends Model
         return $this->belongsTo(DriveType::class)->withDefault();
     }
 
+    public function carMake()
+    {
+        return $this->belongsTo(CarMake::class)->withDefault();
+    }
+
+    public function carModel()
+    {
+        return $this->belongsTo(CarModel::class)->withDefault();
+    }
+
 }

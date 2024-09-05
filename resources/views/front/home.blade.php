@@ -69,27 +69,28 @@
                                             </div>
 
                                             <div class="col-lg-6 mb20">
-                                                <h5>Seats</h5>
-                                                <select name="seats" id="seats" class="form-select">
-                                                    <option selected disabled value="">Select Seats</option>
-                                                    @foreach ($seats as $seat)
-                                                        <option value="{{ $seat->id }}">{{ $seat->name }}</option>
+                                                <h5>Car Make</h5>
+                                                <select name="car_makes" id="car_makes" class="form-select" onchange="carMakeSelected(this)">
+                                                    <option selected disabled value="">Select Car Make</option>
+                                                    @foreach ($carMakes as $make)
+                                                        <option value="{{ $make->id }}">{{ $make->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
                                             <div class="col-lg-6 mb20">
-                                                <h5>Engine</h5>
-                                                <select name="engines" id="engine" class="form-select">
-                                                    <option selected disabled value="">Select Engine</option>
-                                                    @foreach ($carEngines as $engine)
-                                                        <option value="{{ $engine->id }}">{{ $engine->name }}</option>
-                                                    @endforeach
+                                                <h5>Car Model</h5>
+                                                <select name="car_models" id="car_models" class="form-select">
+                                                    <option selected disabled value="">Select Car Model</option>
+                                                    {{-- @foreach ($carModels as $model)
+                                                        <option value="{{ $model->id }}">{{ $model->name }}</option>
+                                                    @endforeach --}}
                                                 </select>
                                             </div>
 
+
                                             <div class="col-lg-6 mt20" style="margin-top: 41px">
-                                                <input type='submit' id='send_message' value='Find a Vehicle'
+                                                <input type='submit' id='send_message' value='Find A Vehicle'
                                                     class="btn-main pull-right">
                                             </div>
                                         </div>
@@ -122,7 +123,7 @@
                                         <h4>Easy Booking, Fast Approval. </h4>
                                         <p>Submit your booking with a few simple steps. Our team will review your
                                             information swiftly,
-                                            ensuring you're on the road in no timme.
+                                            ensuring you're on the road in no time.
                                         </p>
                                     </li>
                                     <li>
@@ -140,53 +141,25 @@
 
         <section aria-label="section" class="pt40 pb40 text-light" data-bgcolor="#111111">
             <div class="wow fadeInRight d-flex">
+                {{-- <div class="de-marquee-list">
+                    <div class="d-item">
+                        <span class="d-item-txt">
+                        </span>
+
+                        <span class="d-item-display">
+                            <i class="d-item-dot"></i>
+                        </span>
+                    </div>
+                </div> --}}
+
                 <div class="de-marquee-list">
                     <div class="d-item">
-                        <span class="d-item-txt">SUV</span>
+                        <span class="d-item-txt">Rentals Starting As Low As $375 A Week</span>
                         <span class="d-item-display">
                             <i class="d-item-dot"></i>
                         </span>
-                        <span class="d-item-txt">Hatchback</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Crossover</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Convertible</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sedan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sports Car</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Coupe</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Station Wagon</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Truck</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivans</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Exotic Cars</span>
+
+                        <span class="d-item-txt">Rentals Starting As Low As $375 A Week</span>
                         <span class="d-item-display">
                             <i class="d-item-dot"></i>
                         </span>
@@ -195,51 +168,12 @@
 
                 <div class="de-marquee-list">
                     <div class="d-item">
-                        <span class="d-item-txt">SUV</span>
+                        <span class="d-item-txt">Rentals Starting As Low As $375 A Week</span>
                         <span class="d-item-display">
                             <i class="d-item-dot"></i>
                         </span>
-                        <span class="d-item-txt">Hatchback</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Crossover</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Convertible</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sedan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Sports Car</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Coupe</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivan</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Station Wagon</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Truck</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Minivans</span>
-                        <span class="d-item-display">
-                            <i class="d-item-dot"></i>
-                        </span>
-                        <span class="d-item-txt">Exotic Cars</span>
+
+                        <span class="d-item-txt">Rentals Starting As Low As $375 A Week</span>
                         <span class="d-item-display">
                             <i class="d-item-dot"></i>
                         </span>
@@ -276,35 +210,6 @@
 
 
 
-        <section class="text-light jarallax" aria-label="section">
-            <img src="{{ asset('front-assets/images/background/3.jpg') }}" alt="" class="jarallax-img">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <h1>Let's Your Adventure Begin</h1>
-                        <div class="spacer-20"></div>
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fa fa-trophy de-icon mb20"></i>
-                        <h4>First Class Services</h4>
-                        <p>Where luxury meets exceptional care, creating unforgettable moments and exceeding your
-                            every expectation.</p>
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fa fa-road de-icon mb20"></i>
-                        <h4>24/7 road assistance</h4>
-                        <p>Reliable support when you need it most, keeping you on the move with confidence and peace
-                            of mind.</p>
-                    </div>
-                    <div class="col-md-3">
-                        <i class="fa fa-map-pin de-icon mb20"></i>
-                        <h4>Free Pick-Up & Drop-Off</h4>
-                        <p>Enjoy free pickup and drop-off services, adding an extra layer of ease to your car rental
-                            experience.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
         <section id="section-faq">
@@ -485,3 +390,24 @@
     </div>
     <!-- END Hero -->
 @endsection
+
+@push('scripts')
+    <script>
+
+        var carModels = @json($carModels);
+
+        function carMakeSelected(e){
+            console.log(e.value,carModels);
+            var makeId = e.value;
+            var models = carModels.filter(model => model.car_make_id == makeId);
+            var modelSelect = document.getElementById('car_models');
+            modelSelect.innerHTML = '<option selected disabled value="">Select Car Model</option>';
+            models.forEach(model => {
+                var option = document.createElement('option');
+                option.value = model.id;
+                option.text = model.name;
+                modelSelect.add(option);
+            });
+        }
+    </script>
+@endpush

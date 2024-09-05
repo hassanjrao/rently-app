@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('page-title', 'Cars')
+@section('page-title', 'Rentals')
 
 @section('content')
     <div class="no-bottom zebra" id="content">
@@ -14,7 +14,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h1>Cars</h1>
+                            <h1>Rentals</h1>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="item_filter_group">
-                                <h4>Car Body Type</h4>
+                                <h4>Vehicle Body Type</h4>
                                 <div class="de_form">
 
                                     @foreach ($bodyTypes as $type)
@@ -63,6 +63,26 @@
                                                 value="{{ $type->id }}">
                                             <label for="{{ 'bodyType' . $type->id }}">
                                                 {{ $type->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="item_filter_group">
+                                <h4>Vehicle Car Make</h4>
+                                <div class="de_form">
+
+                                    @foreach ($carMakes as $carMake)
+                                        <div class="de_checkbox">
+                                            <input id="{{ 'carMake' . $carMake->id }}" name="car_makes[]" type="checkbox"
+                                                {{ in_array($carMake->id, $selectedCarMakes) ? 'checked' : '' }}
+                                                value="{{ $carMake->id }}">
+                                            <label for="{{ 'carMake' . $carMake->id }}">
+                                                {{ $carMake->name }}
                                             </label>
                                         </div>
                                     @endforeach
@@ -130,8 +150,7 @@
 
             let selectedVehicleTypes = [];
             let selectedBodyTypes = [];
-            let selectedSeats = [];
-            let selectedEngines = [];
+            let selectedCarMakes = [];
 
             document.querySelectorAll('input[name="vehicle_types[]"]:checked').forEach(function(checkbox) {
                 selectedVehicleTypes.push(checkbox.value);
@@ -141,13 +160,10 @@
                 selectedBodyTypes.push(checkbox.value);
             });
 
-            document.querySelectorAll('input[name="seats[]"]:checked').forEach(function(checkbox) {
-                selectedSeats.push(checkbox.value);
+            document.querySelectorAll('input[name="car_makes[]"]:checked').forEach(function(checkbox) {
+                selectedCarMakes.push(checkbox.value);
             });
 
-            document.querySelectorAll('input[name="engines[]"]:checked').forEach(function(checkbox) {
-                selectedEngines.push(checkbox.value);
-            });
 
             let queryString = '?';
 
@@ -159,13 +175,10 @@
                 queryString += '&body_types=' + selectedBodyTypes.join(',');
             }
 
-            if (selectedSeats.length > 0) {
-                queryString += '&seats=' + selectedSeats.join(',');
+            if (selectedCarMakes.length > 0) {
+                queryString += '&car_makes=' + selectedCarMakes.join(',');
             }
 
-            if (selectedEngines.length > 0) {
-                queryString += '&engines=' + selectedEngines.join(',');
-            }
 
             console.log(queryString);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BodyType;
 use App\Models\Car;
 use App\Models\CarEngine;
+use App\Models\CarMake;
 use App\Models\Location;
 use App\Models\Seat;
 use App\Models\VehicleType;
@@ -26,6 +27,8 @@ class CarController extends Controller
         $selectedBodyTypes=$request->body_types ? explode(',',$request->body_types) : [];
         $selectedSeats=$request->seats ? explode(',',$request->seats) : [];
         $selectedEngines=$request->engines ? explode(',',$request->engines) : [];
+        $selectedCarMakes=$request->car_makes ? explode(',',$request->car_makes) : [];
+        $selectedCarModels=$request->car_models ? explode(',',$request->car_models) : [];
 
 
 
@@ -42,15 +45,20 @@ class CarController extends Controller
         ->when(!empty($selectedEngines),function($query) use($selectedEngines){
             return $query->whereIn('car_engine_id',$selectedEngines);
         })
+        ->when(!empty($selectedCarMakes),function($query) use($selectedCarMakes){
+            return $query->whereIn('car_make_id',$selectedCarMakes);
+        })
+        ->when(!empty($selectedCarModels),function($query) use($selectedCarModels){
+            return $query->whereIn('car_model_id',$selectedCarModels);
+        })
         ->with(['seat','vehicleType','bodyType','transmission'])
         ->paginate(10);
 
         $vehicleTypes=VehicleType::latest()->get();
         $bodyTypes=BodyType::latest()->get();
-        $seats=Seat::latest()->get();
-        $engines=CarEngine::latest()->get();
+        $carMakes=CarMake::latest()->get();
 
-        return view('front.cars.index',compact('cars','vehicleTypes','bodyTypes','seats','engines','selectedVehicleTypes','selectedBodyTypes','selectedSeats','selectedEngines'));
+        return view('front.cars.index',compact('cars','vehicleTypes','bodyTypes','selectedVehicleTypes','selectedBodyTypes','selectedSeats','selectedEngines','carMakes','selectedCarMakes','selectedCarModels'));
     }
 
     /**
