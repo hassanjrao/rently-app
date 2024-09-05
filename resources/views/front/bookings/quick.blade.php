@@ -272,7 +272,7 @@
                                             </div>
 
                                             <div class="col-lg-6">
-                                                <h5>Income Proof</h5>
+                                                <h5>Proof of Income</h5>
                                                 <div class="field-set">
                                                     @php
                                                         $value = old(
