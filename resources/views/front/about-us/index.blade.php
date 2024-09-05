@@ -58,7 +58,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-5">
 
-                    <h2>Only Quality For Clients to We Offer Fast Approvals To Get You On The Road.</h2>
+                    <h2>We Offer Fast Approvals To Get You On The Road.</h2>
                     <div class="spacer-20"></div>
 
                    <ul>
