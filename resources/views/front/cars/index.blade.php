@@ -72,42 +72,9 @@
                                 </div>
                             </div>
 
-                            <div class="item_filter_group">
-                                <h4>Car Seats</h4>
-                                <div class="de_form">
 
-                                    @foreach ($seats as $seat)
-                                        <div class="de_checkbox">
-                                            <input id="{{ 'seat' . $seat->id }}" name="seats[]" type="checkbox"
-                                            {{ in_array($seat->id, $selectedSeats) ? 'checked' : '' }}
-                                                value="{{ $seat->id }}">
-                                            <label for="{{ 'seat' . $seat->id }}">
-                                                {{ $seat->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
 
-                            <div class="item_filter_group">
-                                <h4>Car Engine Capacity (cc)</h4>
-                                <div class="de_form">
-
-                                    @foreach ($engines as $engine)
-                                        <div class="de_checkbox">
-                                            <input id="{{ 'engine' . $engine->id }}" name="engines[]" type="checkbox"
-                                            {{ in_array($engine->id, $selectedEngines) ? 'checked' : '' }}
-                                                value="{{ $engine->id }}">
-                                            <label for="{{ 'engine' . $engine->id }}">
-                                                {{ $engine->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                            </div>
-
-                            <div class="item_filter_group">
+                            {{-- <div class="item_filter_group">
                                 <h4>Price ($)</h4>
                                 <div class="price-input">
                                     <div class="field">
@@ -128,7 +95,7 @@
                                     <input type="range" class="range-max" min="0" max="2000" value="2000"
                                         step="1">
                                 </div>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
 
