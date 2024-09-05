@@ -19,8 +19,10 @@
                     <div class="col-lg-12 text-light">
                         <div class="spacer-double"></div>
                         <div class="spacer-double"></div>
-                        <h1 class="mb-2">Looking for a <span class="id-color">vehicle</span>? You're at the
-                            right place.</h1>
+                        <h1 class="mb-2">Ready to
+                            <span class="id-color">ride a while</span>? You're at the
+                            right place.
+                        </h1>
                         <div class="spacer-single"></div>
                     </div>
 
@@ -106,24 +108,27 @@
                             <div class="container-timeline">
                                 <ul>
                                     <li>
-                                        <h4>Choose a vehicle</h4>
-                                        <p>Unlock unparalleled adventures and memorable journeys with our vast fleet
-                                            of vehicles tailored to suit every need, taste, and destination.</p>
+                                        <h4>Find Your Perfect Ride</h4>
+                                        <p>From sleek sedans to spacious SUVs, we've got the ride that fits your lifestyle.
+                                        </p>
                                     </li>
                                     <li>
-                                        <h4>Pick location &amp; date</h4>
-                                        <p>Pick your ideal location and date, and let us take you on a journey
-                                            filled with convenience, flexibility, and unforgettable experiences.</p>
+                                        <h4>Plan Your Journey.</h4>
+                                        <p>Pick up your ride from one of our convenient locations or enjoy the convenience
+                                            of our delivery
+                                            service within our designated area.</p>
                                     </li>
                                     <li>
-                                        <h4>Make a booking</h4>
-                                        <p>Secure your reservation with ease, unlocking a world of possibilities and
-                                            embarking on your next adventure with confidence.</p>
+                                        <h4>Easy Booking, Fast Approval. </h4>
+                                        <p>Submit your booking with a few simple steps. Our team will review your
+                                            information swiftly,
+                                            ensuring you're on the road in no timme.
+                                        </p>
                                     </li>
                                     <li>
-                                        <h4>Sit back &amp; relax</h4>
-                                        <p>Hassle-free convenience as we take care of every detail, allowing you to
-                                            unwind and embrace a journey filled comfort.</p>
+                                        <h4>Hit the Road in Style.</h4>
+                                        <p>Once approved, we'll work diligently to have your vehicle ready for pickup or delivery as soon as
+                                            possible. Sit back, relax, and get ready for an unforgehable journey.</p>
                                     </li>
                                 </ul>
                             </div>
