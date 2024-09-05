@@ -249,6 +249,31 @@
         </section>
 
 
+        <section id="section-cars">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 offset-lg-3 text-center">
+                        <h2>Our Vehicle Fleet</h2>
+                        <p>Driving your dreams to reality with an exquisite fleet of versatile vehicles for
+                            unforgettable journeys.</p>
+                        <div class="spacer-20"></div>
+                    </div>
+
+                    <div id="items-carousel" class="owl-carousel wow fadeIn">
+
+                        @foreach ($cars as $car)
+                            <div class="col-lg-12">
+                                <x-car :car="$car" />
+                            </div>
+                        @endforeach
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
         <section class="text-light jarallax">
             <img src="{{ asset('front-assets/images/background/2.jpg') }}" class="jarallax-img" alt="">
             <div class="container">
@@ -298,29 +323,6 @@
             </div>
         </section>
 
-        <section id="section-cars">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 offset-lg-3 text-center">
-                        <h2>Our Vehicle Fleet</h2>
-                        <p>Driving your dreams to reality with an exquisite fleet of versatile vehicles for
-                            unforgettable journeys.</p>
-                        <div class="spacer-20"></div>
-                    </div>
-
-                    <div id="items-carousel" class="owl-carousel wow fadeIn">
-
-                        @foreach ($cars as $car)
-                            <div class="col-lg-12">
-                                <x-car :car="$car" />
-                            </div>
-                        @endforeach
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
 
         <section class="text-light jarallax" aria-label="section">
             <img src="{{ asset('front-assets/images/background/3.jpg') }}" alt="" class="jarallax-img">
