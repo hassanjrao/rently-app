@@ -26,6 +26,7 @@ class UserProfileController extends Controller
         ->with(['car','pickupLocation','destinationLocation'])
         ->get();
 
+
         $upComingBookings=$user->bookings()->where('pickup_date_time','>=',now())->count();
 
 

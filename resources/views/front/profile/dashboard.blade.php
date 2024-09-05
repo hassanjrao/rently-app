@@ -92,6 +92,8 @@
                                         </th>
                                         <th scope="col"><span class="text-uppercase fs-12 text-gray">Return Date</span>
                                         </th>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Term</span>
+                                        </th>
                                         <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
                                     </tr>
                                 </thead>
@@ -118,6 +120,10 @@
                                             </td>
                                             <td><span class="d-lg-none d-sm-block">Return Date</span>
                                                 {{ $booking->return_date_time }}
+                                            </td>
+
+                                            <td><span class="d-lg-none d-sm-block">Term</span>
+                                                {{ $booking->number_of_rent_days }}
                                             </td>
                                             <td>
                                                 @if($booking->status == 'cancelled')

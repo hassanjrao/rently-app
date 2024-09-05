@@ -13,7 +13,7 @@ class Booking extends Model
 
     protected $guarded=[];
 
-    protected $appends=['booking_id','license_front_image_url','license_back_image_url','proof_of_income_url','proof_of_income_url'];
+    protected $appends=['booking_id','license_front_image_url','license_back_image_url','proof_of_income_url','proof_of_income_url','number_of_rent_days'];
 
     public function getLicenseFrontImageUrlAttribute(){
         return $this->driver_license_front_image? Storage::url($this->driver_license_front_image):null;
@@ -25,6 +25,19 @@ class Booking extends Model
 
     public function getProofOfIncomeUrlAttribute(){
         return $this->proof_of_income? Storage::url($this->proof_of_income):null;
+    }
+
+    public function getNumberOfRentDaysAttribute(){
+        if(!$this->pickup_date_time || !$this->return_date_time){
+            return 0;
+        }
+
+        // convert to carbon instance
+        $this->pickup_date_time = now()->parse($this->pickup_date_time);
+        $this->return_date_time = now()->parse($this->return_date_time);
+
+        return $this->pickup_date_time->diffInDays($this->return_date_time);
+
     }
 
     public function getBookingIdAttribute(){
