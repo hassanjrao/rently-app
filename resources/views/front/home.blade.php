@@ -274,54 +274,6 @@
         </section>
 
 
-        <section class="text-light jarallax">
-            <img src="{{ asset('front-assets/images/background/2.jpg') }}" class="jarallax-img" alt="">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInRight">
-                        <h2>We offer customers a wide range of <span class="id-color">commercial cars</span> and
-                            <span class="id-color">luxury cars</span> for any occasion.
-                        </h2>
-                    </div>
-                    <div class="col-lg-6 wow fadeInLeft">
-                        At our car rental agency, we believe that everyone deserves to experience the pleasure of
-                        driving a reliable and comfortable vehicle, regardless of their budget. We have curated a
-                        diverse fleet of well-maintained cars, ranging from sleek sedans to spacious SUVs, all at
-                        competitive prices. With our streamlined rental process, you can quickly and conveniently
-                        reserve your desired vehicle. Whether you need transportation for a business trip, family
-                        vacation, or simply want to enjoy a weekend getaway, we have flexible rental options to
-                        accommodate your schedule.
-                    </div>
-                </div>
-                <div class="spacer-double"></div>
-                <div class="row text-center">
-                    <div class="col-md-3 col-sm-6 mb-sm-30">
-                        <div class="de_count transparent text-light wow fadeInUp">
-                            <h3 class="timer" data-to="15425" data-speed="3000">0</h3>
-                            Completed Orders
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-sm-30">
-                        <div class="de_count transparent text-light wow fadeInUp">
-                            <h3 class="timer" data-to="8745" data-speed="3000">0</h3>
-                            Happy Customers
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-sm-30">
-                        <div class="de_count transparent text-light wow fadeInUp">
-                            <h3 class="timer" data-to="235" data-speed="3000">0</h3>
-                            Vehicles Fleet
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-sm-30">
-                        <div class="de_count transparent text-light wow fadeInUp">
-                            <h3 class="timer" data-to="15" data-speed="3000">0</h3>
-                            Years Experience
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
         <section class="text-light jarallax" aria-label="section">
@@ -349,6 +301,55 @@
                         <h4>Free Pick-Up & Drop-Off</h4>
                         <p>Enjoy free pickup and drop-off services, adding an extra layer of ease to your car rental
                             experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="section-faq">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2>Have Any Questions?</h2>
+                        <div class="spacer-20"></div>
+                    </div>
+                </div>
+                <div class="row g-custom-x">
+                    <div class="col-md-6 wow fadeInUp">
+                        <div class="accordion secondary">
+                            <div class="accordion-section">
+                                @foreach ($firstColumnFaqs as $faq)
+                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
+                                        {{ $faq->question }}
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
+                                        <p>
+                                            {{ $faq->answer }}
+                                        </p>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow fadeInUp">
+                        <div class="accordion secondary">
+                            <div class="accordion-section">
+
+                                @foreach ($secondColumnFaqs as $faq)
+                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
+                                        {{ $faq->question }}
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
+                                        <p>
+                                            {{ $faq->answer }}
+                                        </p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -417,80 +418,69 @@
             </div>
         </section>
 
-        <section id="section-faq">
+
+
+        <section aria-label="section">
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <h2>Have Any Questions?</h2>
+                        <h2>Contact Us</h2>
                         <div class="spacer-20"></div>
                     </div>
                 </div>
-                <div class="row g-custom-x">
-                    <div class="col-md-6 wow fadeInUp">
-                        <div class="accordion secondary">
-                            <div class="accordion-section">
-                                @foreach ($firstColumnFaqs as $faq)
-                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
-                                        {{ $faq->question }}
-                                    </div>
-                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
-                                        <p>
-                                            {{ $faq->answer }}
-                                        </p>
-                                    </div>
-                                @endforeach
+                <div class="row  d-flex justify-content-center">
 
+                    <div class="col-lg-8 mb-sm-30">
+
+
+                        <form id="contact_form" class="form-border" method="post" action="{{ route('contact-us.store') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-4 mb10">
+                                    <div class="field-set">
+                                        <input type="text" name="name" id="name" class="form-control"
+                                            placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb10">
+                                    <div class="field-set">
+                                        <input type="email" name="email" id="email" class="form-control"
+                                            placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb10">
+                                    <div class="field-set">
+                                        <input type="tel" name="phone" id="phone" class="form-control"
+                                            placeholder="Your Phone" required>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="field-set mb20">
+                                <textarea name="message" id="message" class="form-control" placeholder="Your Message" required></textarea>
+                            </div>
+                            {{-- <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div> --}}
+                            <div id='submit' class="mt20 d-flex justify-content-center w-100">
+                                <input type='submit' id='send_message' value='Send Message' class="btn-main">
+                            </div>
+
+                            <div id="success_message" class='success'>
+                                Your message has been sent successfully. Refresh this page if you want to send more
+                                messages.
+                            </div>
+                            <div id="error_message" class='error'>
+                                Sorry there was an error sending your form.
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="col-md-6 wow fadeInUp">
-                        <div class="accordion secondary">
-                            <div class="accordion-section">
 
-                                @foreach ($secondColumnFaqs as $faq)
-                                    <div class="accordion-section-title" data-tab="#accordion-{{ $faq->id }}">
-                                        {{ $faq->question }}
-                                    </div>
-                                    <div class="accordion-section-content" id="accordion-{{ $faq->id }}">
-                                        <p>
-                                            {{ $faq->answer }}
-                                        </p>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+
         </section>
 
-        <section id="section-call-to-action" class="bg-color-2 pt60 pb60 text-light">
-            <div class="container">
-                <div class="container">
-                    <div class="row">
 
-                        <div class="col-lg-4 offset-lg-2">
-                            <span class="subtitle text-white">Call us for further information</span>
-                            <h2 class="s2">Rentaly customer care is here to help you anytime.</h2>
-                        </div>
-
-                        <div class="col-lg-4 text-lg-center text-sm-center">
-                            <div class="phone-num-big">
-                                <i class="fa fa-phone"></i>
-                                <span class="pnb-text">
-                                    Call Us Now
-                                </span>
-                                <span class="pnb-num">
-                                    {{ $settings->phone }}
-                                </span>
-                            </div>
-                            <a href="#" class="btn-main">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
     </div>
     <!-- END Hero -->
