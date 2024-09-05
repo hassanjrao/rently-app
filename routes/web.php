@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminLocationController;
 use App\Http\Controllers\AdminNewsController;
 use App\Http\Controllers\AdminPrivacyController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\AdminReviewController;
 use App\Http\Controllers\AdminSeatController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AdminTermsConditionController;
@@ -126,6 +127,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource('users', AdminUserController::class)->except(['show', 'create', 'store','edit']);
 
     Route::resource('news', AdminNewsController::class)->except(['show']);
+
+
+    Route::resource('reviews', AdminReviewController::class)->except(['show']);
 
 
     Route::resource('contact-us-requests', AdminContactUsRequestController::class)->except(['show', 'create', 'store','edit']);

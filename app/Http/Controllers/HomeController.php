@@ -10,6 +10,7 @@ use App\Models\CarModel;
 use App\Models\Faq;
 use App\Models\News;
 use App\Models\PrivacyPolicy;
+use App\Models\Review;
 use App\Models\Seat;
 use App\Models\TermsCondition;
 use App\Models\VehicleType;
@@ -52,7 +53,9 @@ class HomeController extends Controller
         $carMakes=CarMake::all();
         $carModels=CarModel::all();
 
-        return view('front.home',compact('cars','latestNews','vehicleTypes','bodyTypes','seats','carEngines','firstColumnFaqs','secondColumnFaqs','carMakes','carModels'));
+        $reviews=Review::latest()->take(3)->get();
+
+        return view('front.home',compact('cars','latestNews','vehicleTypes','bodyTypes','seats','carEngines','firstColumnFaqs','secondColumnFaqs','carMakes','carModels','reviews'));
     }
 
 
