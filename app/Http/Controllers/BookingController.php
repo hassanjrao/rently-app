@@ -14,27 +14,7 @@ class BookingController extends Controller
 {
     public function quickBooking(Request $request)
     {
-        try {
-            $admin = User::whereHas('roles', function ($q) {
-                $q->where('name', 'admin');
-            })->first();
 
-
-            $booking = Booking::latest()->first();
-
-           $t= $admin->notify(new BookingNotification($booking));
-
-            Log::info('BookingController', [
-                'message' => 'Booking created successfully',
-                'booking' => $t,
-            ]);
-        } catch (\Exception $e) {
-            Log::error('BookingController', [
-                'message' => $e->getMessage(),
-                'line' => $e->getLine(),
-                'stack' => $e->getTraceAsString(),
-            ]);
-        }
 
 
         $cars = Car::latest()->get();
@@ -123,6 +103,27 @@ class BookingController extends Controller
 
         // add bookingCreated in session
         session()->put('bookingCreated', true);
+
+        try {
+            $admin = User::whereHas('roles', function ($q) {
+                $q->where('name', 'admin');
+            })->first();
+
+
+
+           $t= $admin->notify(new BookingNotification($booking));
+
+            Log::info('BookingController', [
+                'message' => 'Booking created successfully',
+                'booking' => $t,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('BookingController', [
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+                'stack' => $e->getTraceAsString(),
+            ]);
+        }
 
         return redirect()->back()->withToastSuccess('Booking created successfully');
     }
