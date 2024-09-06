@@ -44,6 +44,7 @@ class BookingNotification extends Notification
         $user=$this->booking->user;
 
         return (new MailMessage)
+        ->greeting('Hello Admin, You have a new booking!')
                     ->subject('You have a new booking')
                     ->line('Details of the booking:')
                     ->line('Booking ID: '.$this->booking->booking_id)
