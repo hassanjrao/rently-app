@@ -99,6 +99,9 @@ class BookingController extends Controller
             $q->where('name', 'admin');
         })->first();
 
+        // add car, user relation in booking
+        $booking=Booking::with(['car','user'])->find($booking->id);
+
         $admin->notify(new BookingNotification($booking));
 
         // add bookingCreated in session
