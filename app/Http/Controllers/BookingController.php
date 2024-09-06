@@ -6,22 +6,41 @@ use App\Models\Booking;
 use App\Models\Car;
 use App\Models\Location;
 use App\Models\User;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BookingController extends Controller
 {
     public function quickBooking(Request $request)
     {
+        try {
+            $admin = User::whereHas('roles', function ($q) {
+                $q->where('name', 'admin');
+            })->first();
+
+
+            $booking = Booking::latest()->first();
+
+            $admin->notify(new BookingNotification($booking));
+        } catch (\Exception $e) {
+            Log::error('BookingController', [
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+                'stack' => $e->getTraceAsString(),
+            ]);
+        }
+
 
         $cars = Car::latest()->get();
 
         $locations = Location::latest()->get();
 
-        $car=Car::find($request->car);
+        $car = Car::find($request->car);
 
         $user = User::find(auth()->id());
 
-        return view('front.bookings.quick', compact('cars', 'locations','car','user'));
+        return view('front.bookings.quick', compact('cars', 'locations', 'car', 'user'));
     }
 
     public function quickStore(Request $request)
@@ -50,14 +69,14 @@ class BookingController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'nullable|string|max:255',
-            'address'=>'required',
-            'date_of_birth'=>'required|date',
-            'driver_license_number'=>'required',
-            'driver_license_state'=>'required',
-            'lead_from'=>'nullable',
-            'driver_license_front_image'=>'required|image',
-            'driver_license_back_image'=>'required|image',
-            'proof_of_income'=>'required|image',
+            'address' => 'required',
+            'date_of_birth' => 'required|date',
+            'driver_license_number' => 'required',
+            'driver_license_state' => 'required',
+            'lead_from' => 'nullable',
+            'driver_license_front_image' => 'required|image',
+            'driver_license_back_image' => 'required|image',
+            'proof_of_income' => 'required|image',
         ]);
 
         $user = User::firstOrCreate([
@@ -70,7 +89,7 @@ class BookingController extends Controller
         ]);
 
 
-        Booking::create([
+        $booking = Booking::create([
             'car_id' => $request->car,
             'user_id' => $user->id,
             'pickup_location_id' => $request->pick_up_location,
@@ -78,16 +97,24 @@ class BookingController extends Controller
             'pickup_date_time' => $request->pick_up_date,
             'return_date_time' => $request->return_date,
             'request' => $request->message,
-            'address'=>$request->address,
-            'date_of_birth'=>$request->date_of_birth,
-            'driver_license_number'=>$request->driver_license_number,
-            'driver_license_state'=>$request->driver_license_state,
-            'lead_from'=>$request->lead_from,
-            'driver_license_front_image'=>$request->file('driver_license_front_image')->store('bookings'),
-            'driver_license_back_image'=>$request->file('driver_license_back_image')->store('bookings'),
-            'proof_of_income'=>$request->file('proof_of_income')->store('bookings'),
+            'address' => $request->address,
+            'date_of_birth' => $request->date_of_birth,
+            'driver_license_number' => $request->driver_license_number,
+            'driver_license_state' => $request->driver_license_state,
+            'lead_from' => $request->lead_from,
+            'driver_license_front_image' => $request->file('driver_license_front_image')->store('bookings'),
+            'driver_license_back_image' => $request->file('driver_license_back_image')->store('bookings'),
+            'proof_of_income' => $request->file('proof_of_income')->store('bookings'),
 
         ]);
+
+        // send notification to admin
+
+        $admin = User::whereHas('roles', function ($q) {
+            $q->where('name', 'admin');
+        })->first();
+
+        $admin->notify(new BookingNotification($booking));
 
         // add bookingCreated in session
         session()->put('bookingCreated', true);
