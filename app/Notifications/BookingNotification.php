@@ -17,13 +17,9 @@ class BookingNotification extends Notification
      * @return void
      */
     public $booking;
-    public $user;
-    public $car;
-    public function __construct($booking, $user, $car)
+    public function __construct($booking)
     {
         $this->booking = $booking;
-        $this->user = $user;
-        $this->car = $car;
     }
 
     /**
@@ -45,14 +41,16 @@ class BookingNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $user=$this->booking->user;
+
         return (new MailMessage)
                     ->subject('You have a new booking')
                     ->line('Details of the booking:')
                     ->line('Booking ID: '.$this->booking->booking_id)
-                    ->line('User Name', $this->user->name)
-                    ->line('User Email', $this->user->email)
-                    ->line('User Phone', $this->user->phone)
-                    ->line('Car: '.$this->car->name)
+                    ->line('User Name: '.$user->name)
+                    ->line('User Email: '.$user->email)
+                    ->line('User Phone: '.$user->phone)
+                    ->line('Car: '.$this->booking->car->name)
                     ->line('Pickup At: '.$this->booking->pickup_date_time)
                     ->line('Return At: '.$this->booking->return_date_time)
                     ->line('Request: '.$this->booking->request)

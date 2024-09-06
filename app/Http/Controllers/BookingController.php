@@ -104,7 +104,7 @@ class BookingController extends Controller
 
 
 
-           $admin->notify(new BookingNotification($booking, $user, $booking->car));
+           $admin->notify(new BookingNotification($booking));
 
             Log::info('BookingController', [
                 'message' => 'Booking created successfully',
