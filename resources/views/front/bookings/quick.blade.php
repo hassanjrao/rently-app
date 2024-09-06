@@ -385,18 +385,18 @@
                             </li>
                             <li>
                                 <h4>Plan Your Journey.</h4>
-                                <p>Pick up your ride from one of our convenient loca-ons or enjoy the convenience of our delivery
+                                <p>Pick up your ride from one of our convenient locations or enjoy the convenience of our delivery
                                     service within our designated area.</p>
                             </li>
                             <li>
                                 <h4>Easy Booking, Fast Approval.</h4>
-                                <p>Submit your booking with a few simple steps. Our team will review your informa-on swiOly,
-                                    ensuring you're on the road in no -me.</p>
+                                <p>Submit your booking with a few simple steps. Our team will review your information swiftly,
+                                    ensuring you're on the road in no time.</p>
                             </li>
                             <li>
                                 <h4>Hit the Road in Style.</h4>
                                 <p>Once approved, we'll work diligently to have your vehicle ready for pickup or delivery as soon as
-                                    possible. Sit back, relax, and get ready for an unforgeFable journey.</p>
+                                    possible. Sit back, relax, and get ready for an unforgettable journey.</p>
                             </li>
                         </ul>
                     </div>
