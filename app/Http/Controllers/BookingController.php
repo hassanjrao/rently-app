@@ -93,16 +93,6 @@ class BookingController extends Controller
 
         ]);
 
-        // send notification to admin
-
-        $admin = User::whereHas('roles', function ($q) {
-            $q->where('name', 'admin');
-        })->first();
-
-        // add car, user relation in booking
-        $booking=Booking::with(['car','user'])->find($booking->id);
-
-        $admin->notify(new BookingNotification($booking));
 
         // add bookingCreated in session
         session()->put('bookingCreated', true);
@@ -114,11 +104,11 @@ class BookingController extends Controller
 
 
 
-           $t= $admin->notify(new BookingNotification($booking));
+           $admin->notify(new BookingNotification($booking, $user, $booking->car));
 
             Log::info('BookingController', [
                 'message' => 'Booking created successfully',
-                'booking' => $t,
+                'booking' => $booking,
             ]);
         } catch (\Exception $e) {
             Log::error('BookingController', [
