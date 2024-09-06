@@ -22,7 +22,12 @@ class BookingController extends Controller
 
             $booking = Booking::latest()->first();
 
-            $admin->notify(new BookingNotification($booking));
+           $t= $admin->notify(new BookingNotification($booking));
+
+            Log::info('BookingController', [
+                'message' => 'Booking created successfully',
+                'booking' => $t,
+            ]);
         } catch (\Exception $e) {
             Log::error('BookingController', [
                 'message' => $e->getMessage(),
