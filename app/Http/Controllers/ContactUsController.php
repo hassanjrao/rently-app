@@ -7,6 +7,7 @@ use App\Models\Faq;
 use App\Models\User;
 use App\Notifications\ContactUsNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ContactUsController extends Controller
 {
@@ -56,11 +57,19 @@ class ContactUsController extends Controller
             'message'=>$request->message
         ]);
 
+        try{
         $admin=User::whereHas('roles',function ($q){
             $q->where('name','admin');
         })->first();
 
         $admin->notify(new ContactUsNotification($contactUsReq));
+        }catch (\Exception $e){
+            Log::error('ContactUsController@store: ',[
+                'message'=>$e->getMessage(),
+                'line'=>$e->getLine(),
+                'trace'=>$e->getTrace()
+            ]);
+        }
 
         return redirect()->back()->withToastSuccess('Successfully submitted your request. We will get back to you soon.');
     }
