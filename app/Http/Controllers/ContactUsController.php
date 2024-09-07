@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactUsRequest;
 use App\Models\Faq;
+use App\Models\User;
+use App\Notifications\ContactUsNotification;
 use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
@@ -47,12 +49,18 @@ class ContactUsController extends Controller
             'message'=>'required'
         ]);
 
-        ContactUsRequest::create([
+       $contactUsReq= ContactUsRequest::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'phone'=>$request->phone,
             'message'=>$request->message
         ]);
+
+        $admin=User::whereHas('roles',function ($q){
+            $q->where('name','admin');
+        })->first();
+
+        $admin->notify(new ContactUsNotification($contactUsReq));
 
         return redirect()->back()->withToastSuccess('Successfully submitted your request. We will get back to you soon.');
     }
