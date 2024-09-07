@@ -73,7 +73,7 @@
                             </div>
 
                             <div class="item_filter_group">
-                                <h4>Vehicle Car Make</h4>
+                                <h4>Vehicle Make</h4>
                                 <div class="de_form">
 
                                     @foreach ($carMakes as $carMake)
