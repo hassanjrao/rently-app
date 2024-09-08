@@ -25,7 +25,7 @@ class AdminCarController extends Controller
     public function index()
     {
         $cars = Car::latest()
-            ->with(['seat', 'vehicleType', 'bodyType', 'fuelType', 'transmission', 'carEngine', 'driveType','carMake','carModel'])
+            ->with(['seat', 'vehicleType', 'bodyType', 'fuelType', 'transmission', 'carEngine', 'driveType', 'carMake', 'carModel'])
             ->get();
 
         return view('admin.cars.index', compact('cars'));
@@ -47,10 +47,10 @@ class AdminCarController extends Controller
         $transmissions = Transmission::latest()->get();
         $driveTypes = DriveType::latest()->get();
         $features = Feature::latest()->get();
-        $carMakes=CarMake::latest()->get();
-        $carModels=CarModel::latest()->get();
+        $carMakes = CarMake::latest()->get();
+        $carModels = CarModel::latest()->get();
 
-        return view('admin.cars.add_edit', compact('car', 'vehicleTypes', 'bodyTypes', 'fuelTypes', 'engines', 'seats', 'transmissions', 'driveTypes', 'features','carMakes','carModels'));
+        return view('admin.cars.add_edit', compact('car', 'vehicleTypes', 'bodyTypes', 'fuelTypes', 'engines', 'seats', 'transmissions', 'driveTypes', 'features', 'carMakes', 'carModels'));
     }
 
     /**
@@ -84,8 +84,8 @@ class AdminCarController extends Controller
             'description' => 'required',
             'main_image' => 'required|image',
             'more_images' => 'nullable|array|max:10',
-            'car_make'=>'required|exists:car_makes,id',
-            'car_model'=>'required|exists:car_models,id',
+            'car_make' => 'required|exists:car_makes,id',
+            'car_model' => 'required|exists:car_models,id',
 
         ]);
 
@@ -108,16 +108,18 @@ class AdminCarController extends Controller
             'car_engine_id' => $request->engine,
             'description' => $request->description,
             'main_image_path' => $request->file('main_image')->store('cars'),
-            'car_make_id'=>$request->car_make,
-            'car_model_id'=>$request->car_model,
+            'car_make_id' => $request->car_make,
+            'car_model_id' => $request->car_model,
 
         ]);
 
 
-        foreach ($request->file('more_images') as $image) {
-            $car->images()->create([
-                'image_path' => $image->store('cars'),
-            ]);
+        if ($request->more_images) {
+            foreach ($request->file('more_images') as $image) {
+                $car->images()->create([
+                    'image_path' => $image->store('cars'),
+                ]);
+            }
         }
 
         $car->features()->attach($request->features);
@@ -224,7 +226,7 @@ class AdminCarController extends Controller
             ]);
         }
 
-        if($request->more_images){
+        if ($request->more_images) {
             // delete all images
             $car->images()->delete();
 
